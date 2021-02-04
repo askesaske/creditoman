@@ -3,22 +3,23 @@
     <h1>Связаться с нами</h1>
     <div class="footer_bord" />
     <div class="content">
-      <div class="form">
+      <form class="form">
         <label for="name">Ваше Имя</label>
-        <input id="name" type="text" placeholder="Как к Вам обращаться" />
+        <input id="name" type="text" placeholder="Как к Вам обращаться" v-model="full_name" />
         <label for="mobile">Контактные данные</label>
         <input
+          v-model="contact_data"
           id="mobile"
           type="text"
           placeholder="Номер телефона или электронная почта"
         />
-        <button>оставить данные</button>
+        <button @click="sendRequest">оставить данные</button>
         <div class="social">
           <img src="../assets/img/main/tweet.png" />
           <img src="../assets/img/main/inst.png" />
           <img src="../assets/img/main/fb.png" />
         </div>
-      </div>
+      </form>
       <div class="contacts">
         <iframe
           class="contacts__map"
@@ -49,7 +50,30 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      full_name: "",
+      contact_data: "",
+      tempData: null,
+      errorMessage: "",
+    };
+  },
+  methods: {
+    sendRequest() {
+      const userInfo = {
+        full_name: this.full_name,
+        contact_data: this.contact_data,
+      };
+      this.$axios.post("http://185.100.65.231/api/requests/", userInfo)
+        .then(response => this.tempData = response.data)
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.log("ERROR!", error);
+        });
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>

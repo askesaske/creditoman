@@ -220,224 +220,26 @@
       </div>
     </div>
 
-    <div class="representations">
-
-      <h3 class="representations__title">
-        Представительства
-      </h3>
-
-      <div class="representations__map">
-        <img src="../assets/img/countries/kazakhstan.png"
-             alt=""
-             v-if="country === 'Kazakhstan'">
-        <img src="../assets/img/countries/kyrgyzstan.png"
-             alt=""
-             v-if="country === 'Kyrgyzstan'">
-        <img src="../assets/img/countries/azerbaijan.png"
-             alt=""
-             v-if="country === 'Azerbaijan'">
-        <img src="../assets/img/countries/ukraine.png"
-             alt=""
-             v-if="country === 'Ukraine'">
-        <img src="../assets/img/countries/moldova.png"
-             alt=""
-             v-if="country === 'Moldova'">
-        <img src="../assets/img/countries/mongolia.png"
-             alt=""
-             v-if="country === 'Mongolia'">
-        <img src="../assets/img/countries/romania.png"
-             alt=""
-             v-if="country === 'Romania'">
-        <img src="../assets/img/countries/vietnam.png"
-             alt=""
-             v-if="country === 'Vietnam'">
-        <img src="../assets/img/countries/philippines.png"
-             alt=""
-             v-if="country === 'Philippines'">
-        <img src="../assets/img/countries/dominican-republic.png"
-             alt=""
-             v-if="country === 'Dominican'">
-        <img src="../assets/img/countries/albania.png"
-             alt=""
-             v-if="country === 'Albania'">
-        <img src="../assets/img/countries/serbia.png"
-             alt=""
-             v-if="country === 'Serbia'">
-        <img src="../assets/img/countries/sri-lanka.png"
-             alt=""
-             v-if="country === 'Sri-lanka'">
-        <img src="../assets/img/countries/namibia.png"
-             alt=""
-             v-if="country === 'Namibia'">
-        <img src="../assets/img/countries/panama.png"
-             alt=""
-             v-if="country === 'Panama'">
-        <img src="../assets/img/countries/guatemala.png"
-             alt=""
-             v-if="country === 'Guatemala'">
-        <img src="../assets/img/countries/republik-des-kongo.png"
-             alt=""
-             v-if="country === 'Des-kongo'">
-        <img src="../assets/img/countries/ecuador.png"
-             alt=""
-             v-if="country === 'Ecuador'">
-        <img src="../assets/img/countries/mexiko.png"
-             alt=""
-             v-if="country === 'Mexiko'">
-        <img src="../assets/img/countries/bosnia-and-herzegovina.png"
-             alt=""
-             v-if="country === 'Bosnia'">
-        <img src="../assets/img/countries/republic-of-macedonia.png"
-             alt=""
-             v-if="country === 'Macedonia'">
-        <img src="../assets/img/countries/columbia.png"
-             alt=""
-             v-if="country === 'Columbia'">
-
-        <div class="representations__countries">
-          <img src="../assets/img/countries/kazakhstan-logo.png"
-               alt=""
-               @click="chooseCountry('Kazakhstan')"
-               :class="country === 'Kazakhstan' ? 'active' : ''">
-          <img src="../assets/img/countries/kyrgyzstan-logo.png"
-               alt=""
-               @click="chooseCountry('Kyrgyzstan')"
-               :class="country === 'Kyrgyzstan' ? 'active' : ''">
-          <img src="../assets/img/countries/azerbaijan-logo.png"
-               alt=""
-               @click="chooseCountry('Azerbaijan')"
-               :class="country === 'Azerbaijan' ? 'active' : ''">
-          <img src="../assets/img/countries/ukraine-logo.png"
-               alt=""
-               @click="chooseCountry('Ukraine')"
-               :class="country === 'Ukraine' ? 'active' : ''">
-          <img src="../assets/img/countries/moldova-logo.png"
-               alt=""
-               @click="chooseCountry('Moldova')"
-               :class="country === 'Moldova' ? 'active' : ''">
-          <img src="../assets/img/countries/mongolia-logo.png"
-               alt=""
-               @click="chooseCountry('Mongolia')"
-               :class="country === 'Mongolia' ? 'active' : ''">
-          <img src="../assets/img/countries/romania-logo.png"
-               alt=""
-               @click="chooseCountry('Romania')"
-               :class="country === 'Romania' ? 'active' : ''">
-          <img src="../assets/img/countries/vietnam-logo.png"
-               alt=""
-               @click="chooseCountry('Vietnam')"
-               :class="country === 'Vietnam' ? 'active' : ''">
-          <img src="../assets/img/countries/philippines-logo.png"
-               alt=""
-               @click="chooseCountry('Philippines')"
-               :class="country === 'Philippines' ? 'active' : ''">
-          <img src="../assets/img/countries/dominican-republic-logo.png"
-               alt=""
-               @click="chooseCountry('Dominican')"
-               :class="country === 'Dominican' ? 'active' : ''">
-          <img src="../assets/img/countries/albania-logo.png"
-               alt=""
-               @click="chooseCountry('Albania')"
-               :class="country === 'Albania' ? 'active' : ''">
-          <img src="../assets/img/countries/serbia-logo.png"
-               alt=""
-               @click="chooseCountry('Serbia')"
-               :class="country === 'Serbia' ? 'active' : ''">
-          <img src="../assets/img/countries/sri-lanka-logo.png"
-               alt=""
-               @click="chooseCountry('Sri-lanka')"
-               :class="country === 'Sri-lanka' ? 'active' : ''">
-          <img src="../assets/img/countries/namibia-logo.png"
-               alt=""
-               @click="chooseCountry('Namibia')"
-               :class="country === 'Namibia' ? 'active' : ''">
-          <img src="../assets/img/countries/panama-logo.png"
-               alt=""
-               @click="chooseCountry('Panama')"
-               :class="country === 'Panama' ? 'active' : ''">
-          <img src="../assets/img/countries/guatemala-logo.png"
-               alt=""
-               @click="chooseCountry('Guatemala')"
-               :class="country === 'Guatemala' ? 'active' : ''">
-          <img src="../assets/img/countries/republik-des-kongo-logo.png"
-               alt=""
-               @click="chooseCountry('Des-kongo')"
-               :class="country === 'Des-kongo' ? 'active' : ''">
-          <img src="../assets/img/countries/ecuador-logo.png"
-               alt=""
-               @click="chooseCountry('Ecuador')"
-               :class="country === 'Ecuador' ? 'active' : ''">
-          <img src="../assets/img/countries/mexiko-logo.png"
-               alt=""
-               @click="chooseCountry('Mexiko')"
-               :class="country === 'Mexiko' ? 'active' : ''">
-          <img src="../assets/img/countries/bosnia-and-herzegovina-logo.png"
-               alt=""
-               @click="chooseCountry('Bosnia')"
-               :class="country === 'Bosnia' ? 'active' : ''">
-          <img src="../assets/img/countries/republic-of-macedonia-logo.png"
-               alt=""
-               @click="chooseCountry('Macedonia')"
-               :class="country === 'Macedonia' ? 'active' : ''">
-          <img src="../assets/img/countries/british-columbia-logo.png"
-               alt=""
-               @click="chooseCountry('Columbia')"
-               :class="country === 'Columbia' ? 'active' : ''">
-        </div>
-      </div>
-    </div>
+    <representations-map style="margin-top: 120px"></representations-map>
 
     <div class="articles">
       <h1>новости и события</h1>
       <div class="articles_bord"/>
       <div class="articles__grid">
-        <div class="single_item" @click="showModal = true">
-          <img src="../assets/img/main/st1.png"/>
-          <p class="single_item__date">2020-11-27</p>
-          <h2 class="single_item__title">Административные условия</h2>
+        <div class="single_item" v-for="n in news">
+          <img :src="n.img"/>
+          <p class="single_item__date">{{ n.created_date | moment("YYYY - MM - DD") }}</p>
+          <h2 class="single_item__title">{{ n.title }}</h2>
           <p class="single_item__descr">
-            Значимость этих проблем настолько очевидна, что реализация
-            намеченных плановых заданий позволяет выполнять важные задания по
-            разработке позиций, занимаемых участниками в отношении поставленных
-            задач.
+            {{ n.short_text }}
           </p>
-          <p class="single_item__more">
-            Читать больше
-          </p>
-        </div>
-        <div class="single_item">
-          <img src="../assets/img/main/st2.png"/>
-          <p class="single_item__date">2020-11-27</p>
-          <h2 class="single_item__title">
-            Стремящиеся вытеснить традиционное производство
-          </h2>
-          <p class="single_item__descr">
-            Безусловно, перспективное планирование говорит о возможностях новых
-            принципов формирования материально-технической и кадровой базы.
-          </p>
-          <p class="single_item__more">
-            Читать больше
-          </p>
-        </div>
-        <div class="single_item">
-          <img src="../assets/img/main/st3.png"/>
-          <p class="single_item__date">2020-11-27</p>
-          <h2 class="single_item__title">
-            Укрепление и развитие структуры требуют определения
-          </h2>
-          <p class="single_item__descr">
-            Значимость этих проблем настолько очевидна, что постоянный
-            количественный рост и сфера нашей активности обеспечивает широкому
-            кругу (специалистов) участие в формировании направлений
-            прогрессивного развития.
-          </p>
-          <p class="single_item__more">
+          <p class="single_item__more" @click="openModal(n)">
             Читать больше
           </p>
         </div>
       </div>
     </div>
-    <news-modal v-if="showModal" @close="showModal = false">
+    <news-modal v-if="showModal" :newsContent=curModalContent @close="showModal = false">
       <h3 slot="header">custom header</h3>
     </news-modal>
   </div>
@@ -445,21 +247,29 @@
 
 <script>
 import NewsModal from "@/components/NewsModal";
+import RepresentationsMap from "@/components/RepresentationsMap";
 
 export default {
   components: {
     NewsModal,
+    RepresentationsMap
   },
   data() {
     return {
-      country: "Kazakhstan",
       showModal: false,
+      news: [],
+      curModalContent: null,
     };
   },
   methods: {
-    chooseCountry(str) {
-      this.country = str;
-    }
+    openModal(n) {
+      this.showModal = true;
+      this.curModalContent = n;
+    },
+  },
+  mounted() {
+    this.$axios.get("http://185.100.65.231/api/news-list/")
+      .then(response => (this.news = response.data));
   }
 };
 </script>
@@ -856,45 +666,6 @@ export default {
   }
 }
 
-//representations
-.representations {
-  text-align: center;
-  padding-top: 120px;
-  &__title {
-    display: inline-block;
-    @include bold;
-    font-size: 40px;
-    text-transform: uppercase;
-    color: #623f99;
-    position: relative;
-    margin-bottom: 8px;
-    &:after {
-      content: '';
-      width: 160px;
-      height: 2px;
-      background-color: #623f99;
-      position: absolute;
-      top: calc(100% + 7px);
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-  &__map {
-    position: relative;
-  }
-  &__countries {
-
-    img {
-      cursor: pointer;
-      &:not(:last-child) {
-        margin-right: 30px;
-      }
-      &.active {
-        filter: drop-shadow(0px 0px 10px rgba(98, 63, 153, 0.5));
-      }
-    }
-  }
-}
 // advantages
 .advantages_wrapper {
 

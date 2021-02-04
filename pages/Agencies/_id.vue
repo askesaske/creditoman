@@ -1,51 +1,61 @@
 <template>
   <div class="solo">
     <div class="header_descr">
-      <div>
+      <div class="country-row">
         <div class="country_menu">
-          <h1>казахстан</h1>
-          <p><img src="../../assets/img/solo/loc.png" />300 терминалов</p>
-          <p><img src="../../assets/img/solo/user.png" />120 работников</p>
-          <p><img src="../../assets/img/solo/case.png" />5 офисов</p>
-          <p>
-            <img src="../../assets/img/solo/wallet.png" />5 млн сумма выдачи
-            займов
-          </p>
+          <h1>{{ country.country }}</h1>
+          <div class="country_menu__items">
+            <div class="country_menu__item">
+              <p>Численность населения</p>
+              <p>{{ country.population}}</p>
+            </div>
+            <div class="country_menu__item">
+              <p>ВВП</p>
+              <p>{{ country.gdp}}</p>
+            </div>
+            <div class="country_menu__item">
+              <p>Основные отрасли</p>
+              <p>{{ country.main_industries}}</p>
+            </div>
+            <div class="country_menu__item">
+              <p>Количество городов</p>
+              <p>{{ country.number_of_cities}}</p>
+            </div>
+          </div>
         </div>
         <p>
-          Казахстан – государство в Центральной Азии, которое раньше входило в
-          состав СССР. Оно простирается от Каспийского моря на западе до
-          Алтайских гор на востоке, где проходит граница с Китаем и Россией.
-          Алма-Ата – самый большой город и важный торговый центр страны. Среди
-          достопримечательностей города стоит отметить Вознесенский собор
-          Русской православной церкви, построенный при Николае II, и Центральный
-          государственный музей Республики Казахстан, тысячи экспонатов которого
-          позволяют получить представление об истории государства.
+          {{country.text}}
         </p>
       </div>
-      <img src="../../assets/img/solo/map.png" />
+<!--      <img :src="country.country_map" />-->
     </div>
     <div class="solo_body">
-      <img src="../../assets/img/solo/1.png" />
+      <img :src="country.country_map" width="590px" height="503px"/>
       <p>
-        Казахстан – государство в Центральной Азии, которое раньше входило в
-        состав СССР. Оно простирается от Каспийского моря на западе до Алтайских
-        гор на востоке, где проходит граница с Китаем и Россией. Алма-Ата –
-        самый большой город и важный торговый центр страны. Среди
-        достопримечательностей города стоит отметить Вознесенский собор Русской
-        православной церкви, построенный при Николае II, и Центральный
-        государственный музей Республики Казахстан, тысячи экспонатов которого
-        позволяют получить представление об истории государства.
+        {{ country.text }}
       </p>
     </div>
-    <a href="#" class="see_all">
+    <nuxt-link :to="'/Agencies'" class="see_all">
       смотреть все страны<img src="../../assets/img/solo/go.png" />
-    </a>
+    </nuxt-link>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      country: [],
+    };
+  },
+  methods: {
+
+  },
+  mounted() {
+    this.$axios.get("http://185.100.65.231/api/country-detail/" + this.$route.params.id + "/")
+      .then(response => (this.country = response.data));
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -62,19 +72,19 @@ p {
   max-width: 488px;
 }
 .header_descr {
-  display: grid;
-  grid-template-columns: 520px 590px;
-  justify-content: space-between;
+  display: block;
+  //grid-template-columns: 520px 590px;
+  //justify-content: space-between;
   width: 1200px;
   max-width: 100%;
-  margin: 0px auto 60px;
+  margin: 0 auto 60px;
   .country_menu {
-    background: #f8f2ff;
-    height: 227px;
-    width: 100%;
-    padding-top: 20px;
-    padding-left: 20px;
+    background: #EDDDFF;
+    //height: 227px;
+    width: 590px;
+    padding: 30px 20px;
     margin-bottom: 20px;
+    margin-right: 20px;
     h1 {
       //@include medium;
       font-size: 40px;
@@ -94,12 +104,37 @@ p {
         margin-right: 10px;
       }
     }
+    &__items{
+
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid #623F99;
+      &:first-child {
+        border-top: 1px solid #623f99;
+      }
+
+      p {
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
   }
 }
+.country-row {
+  display: flex;
+  align-items: flex-start;
+}
 .solo_body {
-  display: grid;
-  grid-template-columns: 590px 488px;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: row-reverse;
+  //grid-template-columns: 590px 488px;
+  //justify-content: space-between;
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
@@ -108,9 +143,12 @@ p {
   p {
     text-align: right;
   }
+  img {
+    margin-left: 20px;
+  }
 }
 .see_all {
-  //@include medium;
+  @include bold;
   font-size: 24px;
   line-height: 28px;
   text-align: center;
@@ -121,6 +159,8 @@ p {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  margin: 0 auto;
+  width: 370px;
   img {
     margin-left: 10px;
   }

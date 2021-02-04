@@ -31,22 +31,8 @@
         >
           представительства
           <div class="dropdown">
-            <a href="#">Казахстан</a>
-            <a href="#">киргизия</a>
-            <a href="#">Азербайджан</a>
-            <a href="#">МОлдова</a>
-            <a href="#">Монголия</a>
-            <a href="#">Румыния</a>
-            <a href="#">Украина</a>
-            <a href="#">вьетнам</a>
-            <a href="#">Филиппины</a>
-            <a href="#">Доминикана</a>
-            <a href="#">албания</a>
-            <a href="#">сербия</a>
-            <a href="#">шри-ланка</a>
-            <a href="#">панама</a>
-            <a href="#">Гуатемала</a>
-            <a href="#">намибия</a>
+            <nuxt-link :to="'/Agencies/' + count.id"
+                       v-for="count in countries" :key="count.id">{{ count.country}}</nuxt-link>
           </div>
         </nuxt-link>
         <nuxt-link
@@ -94,7 +80,8 @@
 import ClickOutside from "vue-click-outside";
 export default {
   data: () => ({
-    langDrop: false
+    langDrop: false,
+    countries: [],
   }),
   directives: {
     ClickOutside
@@ -109,6 +96,10 @@ export default {
     hide() {
       this.langDrop = false;
     }
+  },
+  mounted() {
+    this.$axios.get("http://185.100.65.231/api/country-list/")
+      .then(response => (this.countries = response.data));
   }
 };
 </script>
@@ -224,8 +215,8 @@ export default {
   top: 35px;
   left: -9px;
   width: 200px;
-  height: 609px;
-  padding-top: 25px;
+  //height: 609px;
+  padding: 25px 0;
   box-shadow: 0px 4px 20px rgba(146, 115, 194, 0.5);
   border-radius: 4px;
   background: #ffffff;
