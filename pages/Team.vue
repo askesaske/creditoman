@@ -184,7 +184,7 @@ export default {};
   }
 }
 .title {
-  @include medium;
+  //@include medium;
   font-size: 40px;
   line-height: 47px;
   text-align: center;
@@ -218,7 +218,7 @@ export default {};
     box-shadow: 0px 4px 20px rgba(146, 115, 194, 0.2);
   }
   &__name {
-    @include medium;
+    //@include medium;
     font-size: 24px;
     line-height: 28px;
     color: #623f99;

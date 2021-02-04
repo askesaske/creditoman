@@ -55,16 +55,16 @@
           class="navigation__link"
           title="партнерство"
         >
-          партнерство
+          как стать партнером
         </nuxt-link>
-        <nuxt-link
-          to="/Team"
-          tag="a"
-          class="navigation__link"
-          title="Наша команда"
-        >
-          Наша команда
-        </nuxt-link>
+<!--        <nuxt-link-->
+<!--          to="/Team"-->
+<!--          tag="a"-->
+<!--          class="navigation__link"-->
+<!--          title="Наша команда"-->
+<!--        >-->
+<!--          Наша команда-->
+<!--        </nuxt-link>-->
       </div>
       <div class="lang_local_wrapper" v-click-outside="hide">
         <div @click="toggleLang" class="lang_local">
@@ -245,7 +245,7 @@ export default {
     transform: rotate(45deg);
   }
   a {
-    @include medium;
+    //@include medium;
     font-size: 16px;
     line-height: 19px;
     text-transform: uppercase;

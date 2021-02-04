@@ -187,7 +187,7 @@ export default {};
 .country {
   padding-top: 120px;
   h1 {
-    @include medium;
+    //@include medium;
     font-size: 40px;
     line-height: 47px;
     text-transform: uppercase;
@@ -212,7 +212,7 @@ export default {};
   &__single {
     text-align: center;
     h2 {
-      @include medium;
+      //@include medium;
       font-size: 24px;
       line-height: 28px;
       color: #623f99;

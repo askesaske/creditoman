@@ -326,7 +326,7 @@ export default {};
     background: #d5dd25;
     box-shadow: 0px 2px 12px rgba(213, 221, 37, 0.25);
     border-radius: 30px;
-    @include medium;
+    //@include medium;
     font-size: 18px;
     line-height: 21px;
     text-transform: uppercase;
@@ -341,7 +341,7 @@ export default {};
   }
 }
 .title {
-  @include medium;
+  //@include medium;
   font-size: 40px;
   line-height: 47px;
   text-align: center;
@@ -435,7 +435,7 @@ export default {};
     width: 1200px;
     max-width: 100%;
     p {
-      @include medium;
+      //@include medium;
       font-size: 16px;
       line-height: 19px;
       text-align: center;
@@ -457,7 +457,7 @@ export default {};
   flex-direction: column;
   align-items: center;
   h2 {
-    @include medium;
+    //@include medium;
     font-size: 24px;
     line-height: 28px;
     text-transform: uppercase;
@@ -499,7 +499,7 @@ export default {};
       padding-top: 30px;
       padding-left: 20px;
       p {
-        @include medium;
+        //@include medium;
         font-size: 18px;
         line-height: 21px;
         color: #623f99;
@@ -545,7 +545,7 @@ export default {};
   }
 }
 .costs_txt {
-  @include medium;
+  //@include medium;
   font-size: 24px;
   line-height: 28px;
   text-align: center;
@@ -573,7 +573,7 @@ export default {};
     text-align: center;
     padding-top: 60px;
     p {
-      @include medium;
+      //@include medium;
       font-size: 16px;
       line-height: 19px;
       text-align: center;
@@ -618,7 +618,7 @@ export default {};
         color: #131313;
       }
       h2 {
-        @include medium;
+        //@include medium;
         font-size: 16px;
         line-height: 19px;
         text-transform: uppercase;

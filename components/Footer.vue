@@ -59,7 +59,7 @@ export default {};
   height: 881px;
   padding-top: 120px;
   h1 {
-    @include medium;
+    //@include medium;
     font-size: 40px;
     line-height: 47px;
     text-transform: uppercase;
@@ -85,7 +85,7 @@ export default {};
   align-items: flex-start;
   padding-top: 72px;
   label {
-    @include medium;
+    //@include medium;
     font-size: 16px;
     line-height: 19px;
     text-transform: uppercase;
@@ -116,7 +116,7 @@ export default {};
     opacity: 0.3;
   }
   button {
-    @include medium;
+    //@include medium;
     font-size: 18px;
     line-height: 21px;
     text-transform: uppercase;

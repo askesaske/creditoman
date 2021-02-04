@@ -76,7 +76,7 @@ p {
     padding-left: 20px;
     margin-bottom: 20px;
     h1 {
-      @include medium;
+      //@include medium;
       font-size: 40px;
       line-height: 47px;
       text-transform: uppercase;
@@ -110,7 +110,7 @@ p {
   }
 }
 .see_all {
-  @include medium;
+  //@include medium;
   font-size: 24px;
   line-height: 28px;
   text-align: center;

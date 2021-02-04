@@ -205,7 +205,7 @@ export default {};
 .Products {
   padding-top: 130px;
   &__title {
-    @include medium;
+    //@include medium;
     font-size: 40px;
     line-height: 47px;
     text-align: center;
@@ -240,7 +240,7 @@ export default {};
 .advantages {
   padding: 60px 0;
   h2 {
-    @include medium;
+    //@include medium;
     font-size: 24px;
     line-height: 28px;
     text-align: center;
@@ -266,7 +266,7 @@ export default {};
         padding-top: 27px;
       }
       h3 {
-        @include medium;
+        //@include medium;
         font-size: 24px;
         line-height: 28px;
         text-transform: uppercase;
@@ -325,7 +325,7 @@ export default {};
   padding-bottom: 60px;
   text-align: center;
   h1 {
-    @include medium;
+    //@include medium;
     font-size: 40px;
     line-height: 47px;
     text-transform: uppercase;
@@ -335,7 +335,7 @@ export default {};
 .term_adv {
   padding-bottom: 60px;
   h2 {
-    @include medium;
+    //@include medium;
     font-size: 24px;
     line-height: 28px;
     text-align: center;
@@ -378,7 +378,7 @@ export default {};
   }
   &__txt {
     h2 {
-      @include medium;
+      //@include medium;
       font-size: 24px;
       line-height: 28px;
       text-transform: uppercase;
@@ -439,7 +439,7 @@ export default {};
   padding-top: 120px;
   padding-bottom: 60px;
   h1 {
-    @include medium;
+    //@include medium;
     font-size: 40px;
     line-height: 47px;
     text-align: center;
@@ -450,7 +450,7 @@ export default {};
 .adv_click {
   padding-bottom: 120px;
   h2 {
-    @include medium;
+    //@include medium;
     font-size: 24px;
     line-height: 28px;
     text-align: center;
