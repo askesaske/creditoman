@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer" id="footer">
     <h1>Связаться с нами</h1>
     <div class="footer_bord" />
     <div class="content">

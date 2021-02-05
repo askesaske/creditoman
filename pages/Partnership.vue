@@ -346,7 +346,7 @@ export default {};
     margin: 0 auto;
 
     p {
-      @include bold;
+      @include normal;
       font-size: 24px;
       line-height: 30px;
       text-align: center;

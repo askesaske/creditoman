@@ -8,8 +8,11 @@
         <img width="590px" height="503px" :src="world.continent_img"/>
         <div class="text">
           <div class="text__single" v-for="country in world.country">
-            <nuxt-link :to="'/Agencies/' + country.id">{{ country.country }}</nuxt-link>
-            <p>{{ country.terminal_or_mobile }}</p>
+            <nuxt-link :to="'/Agencies/' + country.id" class="text__name">{{ country.country }}</nuxt-link>
+            <p v-if="country.terminal_or_mobile.terminals !== null">{{ country.terminal_or_mobile.terminals }} терминалов</p>
+            <p v-else-if="country.terminal_or_mobile.mobileapp !== null">
+              Мобильное приложение
+            </p>
             <p>{{ country.workers }} работников</p>
             <p>{{ country.clients }} клиентов</p>
           </div>
@@ -76,6 +79,10 @@ export default {
         margin-right: 0;
         margin-left: 60px;
       }
+      .text__single:first-child {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
     }
   }
 
@@ -108,24 +115,26 @@ export default {
   width: 100%;
   justify-content: space-between;
 
+  &__name {
+    display: block;
+    font-size: 24px;
+    line-height: 30px;
+    color: #623f99;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    @include bold;
+  }
+
   &__single {
     text-align: center;
-
-    h2 {
-      //@include medium;
-      font-size: 24px;
-      line-height: 28px;
-      color: #623f99;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
 
     p {
       @include normal;
       font-size: 16px;
       line-height: 19px;
       color: #131313;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
 
       &:last-of-type {
         margin-bottom: 0;

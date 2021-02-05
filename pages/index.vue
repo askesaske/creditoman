@@ -8,7 +8,7 @@
         </h1>
         <div class="custom_border"/>
         <p>Мы Ваше решение в сложных ситуациях</p>
-        <button>Связаться с нами</button>
+        <button v-scroll-to="{el:'#footer', duration: 700,}">Связаться с нами</button>
       </div>
     </div>
     <div class="sponsors">
@@ -508,7 +508,7 @@ export default {
   padding: 120px 0 88px;
 
   &__text {
-    @include normal;
+    @include light;
     font-size: 18px;
     color: #ffffff;
     text-align: center;
@@ -521,7 +521,7 @@ export default {
   }
 
   &__title {
-    @include bold;
+    @include normal;
     font-size: 24px;
     line-height: 30px;
     color: #d5dd25;
@@ -651,7 +651,7 @@ export default {
   }
 
   &__subtitle {
-    @include normal;
+    @include light;
     font-size: 24px;
     line-height: 28px;
     color: #ffffff;

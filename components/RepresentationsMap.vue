@@ -12,6 +12,7 @@
       </div>
       <div class="representations__countries">
         <img :src="c.country_flag"
+             id="clicked-flag"
              v-for="c in countries"
              alt=""
              @click="chooseCountry(c.country)"
@@ -22,22 +23,48 @@
 </template>
 
 <script>
+let timer = null;
+const AUTO_INTERVAL = 4000;
+
 export default {
   data() {
     return {
       country: "Kazakhstan",
       countries: [],
+      playing: false,
+      currentIndex: 0
     };
   },
   methods: {
     chooseCountry(str) {
       this.country = str;
+    },
+    setAutoRoll() {
+      let vueSelf = this;
+      timer = setInterval(function () {
+        vueSelf.addIndex();
+      }, AUTO_INTERVAL);
+    },
+    addIndex() {
+      let newIndex = this.currentIndex + 1;
+      this.currentIndex = newIndex === this.countries.length ? 0 : newIndex;
+    },
+    play() {
+      this.setAutoRoll();
+      this.playing = true;
+    },
+  },
+  watch: {
+    currentIndex() {
+      let clickedFlag = this.countries[this.currentIndex].country;
+      this.chooseCountry(clickedFlag);
     }
   },
 
   mounted() {
     this.$axios.get("http://185.100.65.231/api/country-list/")
       .then(response => (this.countries = response.data));
+    this.play();
   }
 };
 </script>
@@ -71,12 +98,19 @@ export default {
 
   &__map {
     position: relative;
+
+    img {
+
+    }
   }
 
   &__countries {
 
     img {
       cursor: pointer;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
 
       &:not(:last-child) {
         margin-right: 30px;
