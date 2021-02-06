@@ -1,6 +1,7 @@
 <template>
   <div class="partners">
-    <button class="partners__btn">
+    <button class="partners__btn"
+            :class="btnStop ? 'partners__btn--stop' : ''">
       Скачать вопросник <img src="../assets/img/about/drop.png"/>
     </button>
     <div class="partner-welcome">
@@ -18,6 +19,7 @@
           Когда наш клиент справится и начнет помогать другим, мы оглянемся назад, когда мы были рядом, чтобы помогать и
           поддерживать.
         </p>
+        <p>{{file}}</p>
       </div>
     </div>
 
@@ -299,7 +301,39 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      userScroll: 0,
+      footerPos: 0,
+      btnStop: false,
+      file: []
+    };
+  },
+  methods: {
+    getPosition(element) {
+      var xPosition = 0;
+      var yPosition = 0;
+
+      while (element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+      }
+      return yPosition;
+    },
+  },
+  watch: {
+    userScroll() {
+      this.btnStop = this.userScroll > this.footerPos;
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', e => this.userScroll = window.scrollY);
+    var footer = document.getElementById('footer');
+    this.footerPos = this.getPosition(footer);
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -329,7 +363,11 @@ export default {};
     cursor: pointer;
     border: none;
     outline: none;
-    z-index: 999;
+    z-index: 998;
+
+    &--stop {
+      position: absolute;
+    }
 
     img {
       margin-left: 13px;
@@ -556,6 +594,8 @@ export default {};
       height: 315px;
       background-color: #FFFFFF;
       padding: 30px 20px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
 
       p {
         @include normal;

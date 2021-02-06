@@ -13,7 +13,7 @@
           type="text"
           placeholder="Номер телефона или электронная почта"
         />
-        <button @click="sendRequest">оставить данные</button>
+        <button @click="sendRequest" :class="btnState ? 'active' : ''">оставить данные</button>
         <div class="social">
           <img src="../assets/img/main/tweet.png" />
           <img src="../assets/img/main/inst.png" />
@@ -57,6 +57,7 @@ export default {
       contact_data: "",
       tempData: null,
       errorMessage: "",
+      btnState: false,
     };
   },
   methods: {
@@ -73,6 +74,22 @@ export default {
         });
     }
   },
+  watch: {
+    full_name() {
+      if(this.full_name.length > 0 && this.contact_data.length > 0) {
+        this.btnState = true;
+      } else {
+        this.btnState = false;
+      }
+    },
+    contact_data() {
+      if(this.full_name.length > 0 && this.contact_data.length > 0) {
+        this.btnState = true;
+      } else {
+        this.btnState = false;
+      }
+    }
+  }
 };
 </script>
 
@@ -140,7 +157,7 @@ export default {
     opacity: 0.3;
   }
   button {
-    //@include medium;
+    @include bold;
     font-size: 18px;
     line-height: 21px;
     text-transform: uppercase;
@@ -154,10 +171,11 @@ export default {
     outline: none;
     cursor: pointer;
     transition: 0.3s;
-    &:hover {
-      color: #623f99;
-      background: #d5dd25;
-      box-shadow: 0px 2px 12px rgba(213, 221, 37, 0.25);
+
+    &.active {
+        color: #623f99;
+        background: #d5dd25;
+        box-shadow: 0px 2px 12px rgba(213, 221, 37, 0.25);
     }
   }
   .social {
@@ -168,6 +186,11 @@ export default {
     img {
       cursor: pointer;
       margin-right: 30px;
+      transition: all .2s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }

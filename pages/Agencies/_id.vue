@@ -109,7 +109,8 @@ p {
     }
 
     &__item {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       align-items: center;
       justify-content: space-between;
       padding: 5px 0;
@@ -119,6 +120,8 @@ p {
       }
 
       p {
+        display: block;
+
         &:last-child {
           text-align: right;
         }
@@ -152,7 +155,7 @@ p {
   font-size: 24px;
   line-height: 28px;
   text-align: center;
-  text-decoration-line: underline;
+  text-decoration: none;
   text-transform: uppercase;
   color: #623f99;
   display: flex;

@@ -152,9 +152,10 @@
         Профиль компании<img src="../assets/img/about/drop.png"/>
       </button>
       <div class="video_cont__wrapper">
-        <iframe width="996" height="538" src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+        <div class="video_cont__box">
+          <div class="video_cont__overlay" @click="playVideo" v-if="overlay"></div>
+          <video v-for="v in video" :src="v.video" controls id="video"></video>
+        </div>
       </div>
     </div>
   </div>
@@ -175,6 +176,8 @@ export default {
     countryCount: 0,
     staffCount: 0,
     cashCount: 0,
+    video: [],
+    overlay: true
   }),
 
 
@@ -189,6 +192,10 @@ export default {
         element = element.offsetParent;
       }
       return yPosition;
+    },
+    playVideo() {
+      this.overlay = false;
+      document.getElementById('video').play();
     }
   },
 
@@ -200,7 +207,7 @@ export default {
         this.staffCount = 1000;
         this.cashCount = 7;
       }
-      console.log(this.userScroll + " " + this.counterPos);
+      // console.log(this.userScroll + " " + this.counterPos);
     },
   },
 
@@ -208,6 +215,9 @@ export default {
     window.addEventListener('scroll', e => this.userScroll = window.scrollY);
     var counterBox = document.getElementById('counter');
     this.counterPos = this.getPosition(counterBox);
+
+    this.$axios.get("http://185.100.65.231/api/videos-list/")
+      .then(response => (this.video = response.data));
   },
 };
 </script>
@@ -379,7 +389,7 @@ export default {
   text-align: center;
 
   h1 {
-    @include normal;
+    @include bold;
     font-size: 40px;
     line-height: 47px;
     text-transform: uppercase;
@@ -497,6 +507,31 @@ export default {
     padding: 50px;
     background-color: rgba(146, 115, 194, 0.5);
     border-radius: 4px;
+  }
+
+  &__box {
+    position: relative;
+    video {
+      position: relative;
+      z-index: 1;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &__overlay {
+    cursor: pointer;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/img/about/video-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 2;
   }
 }
 </style>

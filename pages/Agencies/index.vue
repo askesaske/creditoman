@@ -9,7 +9,7 @@
         <div class="text">
           <div class="text__single" v-for="country in world.country">
             <nuxt-link :to="'/Agencies/' + country.id" class="text__name">{{ country.country }}</nuxt-link>
-            <p v-if="country.terminal_or_mobile.terminals !== null">{{ country.terminal_or_mobile.terminals }} терминалов</p>
+            <p v-if="country.terminal_or_mobile.terminals !== null">{{ country.terminal_or_mobile }} терминалов</p>
             <p v-else-if="country.terminal_or_mobile.mobileapp !== null">
               Мобильное приложение
             </p>
