@@ -1,9 +1,10 @@
 <template>
   <div class="partners">
-    <button class="partners__btn"
-            :class="btnStop ? 'partners__btn--stop' : ''">
+    <a class="partners__btn"
+            :class="btnStop ? 'partners__btn--stop' : ''"
+            href="http://185.100.65.231/api/download/">
       Скачать вопросник <img src="../assets/img/about/drop.png"/>
-    </button>
+    </a>
     <div class="partner-welcome">
       <div class="partner-welcome__inner">
         <p>
@@ -19,7 +20,6 @@
           Когда наш клиент справится и начнет помогать другим, мы оглянемся назад, когда мы были рядом, чтобы помогать и
           поддерживать.
         </p>
-        <p>{{file}}</p>
       </div>
     </div>
 
@@ -182,9 +182,9 @@
         ВОПРОСНИК ДЛЯ ПРЕДВАРИТЕЛЬНОГО ИЗУЧЕНИЯ РЫНКА <br/>
         «МИКРО-ЗАЙМОВ ДО ЗАРПЛАТЫ» В ВАШЕЙ СТРАНЕ
       </p>
-      <button class="partners__btn download_ques__btn">
+      <a href="http://185.100.65.231/api/download/" class="partners__btn download_ques__btn">
         Скачать вопросник <img src="../assets/img/about/drop.png"/>
-      </button>
+      </a>
     </div>
 
     <h1 class="title">РАСПРЕДЕЛЕНИЕ РАСХОДОВ</h1>
@@ -352,6 +352,7 @@ export default {
     justify-content: center;
     width: 265px;
     height: 56px;
+    text-decoration: none;
     background: #d5dd25;
     box-shadow: 0px 2px 12px rgba(213, 221, 37, 0.25);
     border-radius: 30px;

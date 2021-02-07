@@ -51,38 +51,47 @@
         <nuxt-link
           tag="div"
           to="/Products"
-          class="products__grid__single grid_first"
+          class="products__grid__single"
         >
-          <h2>DoZP.kz</h2>
-          <div class="grid_bord"/>
-          <p>
-            Мобильное приложение по выдаче онлайн займов
-          </p>
+          <div>
+            <h2>DoZP.kz</h2>
+            <div class="grid_bord"/>
+            <p>
+              Мобильное приложение по выдаче онлайн займов
+            </p>
+          </div>
+          <img src="../assets/img/main/pr1.png" alt="">
         </nuxt-link>
         <nuxt-link
           tag="div"
           to="/Products"
-          class="products__grid__single grid_second"
+          class="products__grid__single"
         >
-          <h2>Терминалы</h2>
-          <div class="grid_bord"/>
-          <p>
-            Специально оборудованный <br>
-            терминал <br>
-            по выдаче займа <br>
-            за 30 секунд
-          </p>
+          <div>
+            <h2>Терминалы</h2>
+            <div class="grid_bord"/>
+            <p>
+              Специально оборудованный <br>
+              терминал <br>
+              по выдаче займа <br>
+              за 30 секунд
+            </p>
+          </div>
+          <img src="../assets/img/main/pr2.png" alt="">
         </nuxt-link>
         <nuxt-link
           tag="div"
           to="/Products"
-          class="products__grid__single grid_third"
+          class="products__grid__single"
         >
-          <h2>Click Advance</h2>
-          <div class="grid_bord"/>
-          <p>
-            Мобильное приложение по выдаче аванса сотрудникам компании
-          </p>
+          <div>
+            <h2>Click Advance</h2>
+            <div class="grid_bord"/>
+            <p>
+              Мобильное приложение по выдаче аванса сотрудникам компании
+            </p>
+          </div>
+          <img src="../assets/img/main/pr3.png" alt="">
         </nuxt-link>
       </div>
     </div>
@@ -452,29 +461,37 @@ export default {
     max-width: 100%;
     margin: 0 auto;
 
-    .grid_first {
-      background-image: url("../assets/img/main/pr1.png");
-    }
-
-    .grid_second {
-      background-image: url("../assets/img/main/pr2.png");
-      background-repeat: no-repeat;
-    }
-
-    .grid_third {
-      background-image: url("../assets/img/main/pr3.png");
-    }
+    //.grid_first {
+    //  background-image: url("../assets/img/main/pr1.png");
+    //}
+    //
+    //.grid_second {
+    //  background-image: url("../assets/img/main/pr2.png");
+    //  background-repeat: no-repeat;
+    //}
+    //
+    //.grid_third {
+    //  background-image: url("../assets/img/main/pr3.png");
+    //}
 
     &__single {
-      background-size: 100% 100%;
-      height: 322px;
       background: #ffffff;
       box-shadow: 0px 4px 12px rgba(146, 115, 194, 0.5);
-      padding-top: 94px;
-      padding-right: 194px;
       text-align: right;
       cursor: pointer;
-      background-position-x: 200px;
+      display: flex;
+      align-items: center;
+      padding: 30px 30px 30px 40px;
+
+      img {
+        margin-left: 30px;
+      }
+
+      &:nth-child(2) {
+        img {
+          margin-left: 0;
+        }
+      }
 
       h2 {
         //@include medium;
