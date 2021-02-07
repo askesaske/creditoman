@@ -4,44 +4,44 @@
       <img class="logo" src="../assets/img/main/logo.png" @click="goHome" />
       <div class="navigation">
         <nuxt-link
-          to="/"
+          :to="localePath('/')"
           tag="a"
           class="navigation__link"
           title="главная"
           exact
         >
-          главная
+          {{ $t('header.home')}}
         </nuxt-link>
-        <nuxt-link to="/About" tag="a" class="navigation__link" title="о нас">
-          о нас
+        <nuxt-link :to="localePath('/About')" tag="a" class="navigation__link" title="о нас">
+          {{ $t('header.about')}}
         </nuxt-link>
         <nuxt-link
-          to="/Products"
+          :to="localePath('/Products')"
           tag="a"
           class="navigation__link"
           title="продукты"
         >
-          продукты
+          {{ $t('header.products')}}
         </nuxt-link>
         <nuxt-link
-          to="/Agencies"
+          :to="localePath('/Agencies')"
           tag="a"
           class="agencies navigation__link"
           title="представительства"
         >
-          представительства
+          {{ $t('header.branches')}}
           <div class="dropdown">
-            <nuxt-link :to="'/Agencies/' + count.id"
+            <nuxt-link :to="localePath('/Agencies/' + count.id)"
                        v-for="count in countries" :key="count.id">{{ count.country}}</nuxt-link>
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/Partnership"
+          :to="localePath('/Partnership')"
           tag="a"
           class="navigation__link"
           title="партнерство"
         >
-          как стать партнером
+          {{ $t('header.partner')}}
         </nuxt-link>
 <!--        <nuxt-link-->
 <!--          to="/Team"-->
@@ -54,11 +54,13 @@
       </div>
       <div class="lang_local_wrapper" v-click-outside="hide">
         <div @click="toggleLang" class="lang_local">
-          <img src="../assets/img/main/rus.png" />
+          <img v-if="langState" src="../assets/img/main/rus.png" />
+          <img v-else src="../assets/img/main/en.png" />
           <img src="../assets/img/main/lang_dropdown.png" />
         </div>
         <div v-if="langDrop" class="lang_local_wrapper__dropdown">
-          <img src="../assets/img/main/en.png" />
+          <img v-if="langState" @click="changeLang('en')" src="../assets/img/main/en.png" />
+          <img v-else @click="changeLang('ru')" src="../assets/img/main/rus.png" />
         </div>
       </div>
     </div>
@@ -78,10 +80,12 @@
 
 <script>
 import ClickOutside from "vue-click-outside";
+
 export default {
   data: () => ({
     langDrop: false,
     countries: [],
+    langState: true,
   }),
   directives: {
     ClickOutside
@@ -92,6 +96,18 @@ export default {
     },
     toggleLang() {
       this.langDrop = !this.langDrop;
+    },
+    changeLang(langVal) {
+      if(langVal === 'en') {
+        this.$i18n.locale = 'en';
+        this.langState = false;
+      }
+      if(langVal ==='ru') {
+        this.$i18n.locale = 'ru';
+        this.langState = true;
+      }
+      this.langDrop = false;
+      // window.location.reload();
     },
     hide() {
       this.langDrop = false;
@@ -141,14 +157,14 @@ export default {
       color: #131313;
       height: 45px;
       text-decoration: none;
-      &::before {
-        display: block;
-        content: attr(title);
-        font-weight: bold;
-        height: 0;
-        overflow: hidden;
-        visibility: hidden;
-      }
+      //&::before {
+      //  display: block;
+      //  content: attr(title);
+      //  font-weight: bold;
+      //  height: 0;
+      //  overflow: hidden;
+      //  visibility: hidden;
+      //}
       &:hover {
         @include extbold;
         color: #623f99;

@@ -1,7 +1,7 @@
 <template>
   <div class="representations">
     <h3 class="representations__title">
-      Представительства
+      {{ $t('branches') }}
     </h3>
 
     <div class="representations__map">

@@ -1,3 +1,4 @@
+import i18n from "./config/i18n";
 
 export default {
   /*
@@ -17,25 +18,24 @@ export default {
   head: {
     title: 'Cashsoswiftly',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]
   },
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  css: [],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    { src: "~/plugins/AnimateNumber", mode: "client" },
+    {src: "~/plugins/AnimateNumber", mode: "client"},
   ],
   /*
   ** Auto import components
@@ -46,6 +46,24 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    [
+      'nuxt-i18n',
+      {
+        defaultLocale: 'ru',
+        locales: [
+          {
+            code: 'en',
+            name: 'English'
+          },
+          {
+            code: 'ru',
+            name: 'Russian'
+          }
+        ],
+        vueI18n: i18n,
+        strategy: 'prefix_except_default',
+      }
+    ]
   ],
   /*
   ** Nuxt.js modules
@@ -64,10 +82,9 @@ export default {
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
-  build: {
-  },
+  build: {},
   router: {
     linkActiveClass: 'active_link',
     linkExactActiveClass: 'exact_active_link',
-  }
+  },
 }

@@ -2,13 +2,10 @@
   <div class="index">
     <div class="welcome">
       <div class="welcome__content">
-        <h1>
-          Микрокредит: <br/>
-          Быстрый кредит в 3 клика
-        </h1>
+        <h1 v-html="$t('home.welcomeTitle')"></h1>
         <div class="custom_border"/>
-        <p>Мы Ваше решение в сложных ситуациях</p>
-        <button v-scroll-to="{el:'#footer', duration: 700,}">Связаться с нами</button>
+        <p>{{ $t('home.welcomeSubtitle') }}</p>
+        <button v-scroll-to="{el:'#footer', duration: 700,}">{{ $t('contactBtn') }}</button>
       </div>
     </div>
     <div class="sponsors">
@@ -22,30 +19,15 @@
     <div class="about">
       <div class="fixed__bg"/>
       <div class="about__content">
-        <h1>О нас</h1>
-        <p>
-          Мы – <span>единственная во всем мире компания</span>, которая может
-          выдать заем, не задавая ни одного вопроса, всего за 30 секунд!
-        </p>
-        <p>
-          Ценность нашей компании в <span>уникальном оборудовании и ПО</span>,
-          которые <span>облегчают и ускоряют процесс</span> выдачи кредита по
-          сравнению с традиционными методами.
-        </p>
-        <p>
-          Программа терминала
-          <span>индивидуально подбирает сумму выдачи</span> и процент возврата с
-          учетом кредитной истории заемщика.
-        </p>
-        <p>
-          «CASHSOSWIFTLY» обеспечивает <span>развитие и функционирование</span>
-          самой широкой сети терминалов по выдаче мгновенных займов по всему
-          миру.
-        </p>
+        <h1>{{ $t('home.aboutUs') }}</h1>
+        <p v-html="$t('home.aboutText1')"></p>
+        <p v-html="$t('home.aboutText2')"></p>
+        <p v-html="$t('home.aboutText3')"></p>
+        <p v-html="$t('home.aboutText4')"></p>
       </div>
     </div>
     <div class="products">
-      <h1>Наши продукты</h1>
+      <h1>{{ $t('home.ourProducts') }}</h1>
       <div class="cus_bord"/>
       <div class="products__grid">
         <nuxt-link
@@ -56,9 +38,7 @@
           <div>
             <h2>DoZP.kz</h2>
             <div class="grid_bord"/>
-            <p>
-              Мобильное приложение по выдаче онлайн займов
-            </p>
+            <p v-html="$t('home.dozpText')"></p>
           </div>
           <img src="../assets/img/main/pr1.png" alt="">
         </nuxt-link>
@@ -68,14 +48,9 @@
           class="products__grid__single"
         >
           <div>
-            <h2>Терминалы</h2>
+            <h2>{{ $t('home.terminal') }}</h2>
             <div class="grid_bord"/>
-            <p>
-              Специально оборудованный <br>
-              терминал <br>
-              по выдаче займа <br>
-              за 30 секунд
-            </p>
+            <p v-html="$t('home.terminalText')"></p>
           </div>
           <img src="../assets/img/main/pr2.png" alt="">
         </nuxt-link>
@@ -87,9 +62,7 @@
           <div>
             <h2>Click Advance</h2>
             <div class="grid_bord"/>
-            <p>
-              Мобильное приложение по выдаче аванса сотрудникам компании
-            </p>
+            <p v-html="$t('home.clickAdvanceText')"></p>
           </div>
           <img src="../assets/img/main/pr3.png" alt="">
         </nuxt-link>
@@ -97,133 +70,86 @@
     </div>
 
     <div class="feature">
-      <p class="feature__text">
-        Мы, CASHSOSWIFTLY, <span>приносим две безусловные выгоды </span>обществу в странах, где мы работаем.
-      </p>
+      <p class="feature__text" v-html="$t('home.featureText')"></p>
 
-      <h4 class="feature__title">
-        Люди, которые занимают деньги, НЕ будут воровать, грабить и каким-либо образом нарушать закон. Люди, которые
-        занимают деньги, учатся финансовой ответственности при минимальных издержках.
-      </h4>
+      <h4 class="feature__title" v-html="$t('home.featureTitle')"></h4>
 
       <div class="feature__items">
-        <p class="feature__item">
-          Мы отдаем должное людям. Мы безоговорочно доверяем <br>
-          нашему клиенту, когда порой ему никто не доверяет
-        </p>
-        <p class="feature__item">
-          Мы стараемся помочь и помогаем, когда нет другой помощи
-        </p>
-        <p class="feature__item">
-          Наши проценты никогда не растут безмерно, как в <br>
-          банковских кредитах. Поэтому, даже когда наш клиент <br>
-          нуждается, он тем не менее вернет сумму, меньшую по <br>
-          сравнению с банковским кредитом
-        </p>
+        <p class="feature__item" v-html="$t('home.featureItem1')"></p>
+        <p class="feature__item" v-html="$t('home.featureItem2')"></p>
+        <p class="feature__item" v-html="$t('home.featureItem3')"></p>
       </div>
     </div>
 
     <div class="main-features">
-      <h3 class="main-features__title">
-        Микрофинансовые организации дает обществу следующие <br>
-        основные преимущества
-      </h3>
+      <h3 class="main-features__title" v-html="$t('home.mainFeaturesTitle')"></h3>
 
       <div class="main-features__row">
         <div class="main-features__box">
           <img src="../assets/img/main/cash.png" alt="">
           <h5>
-            Доступ к деньгам
+            {{ $t('home.featureItemTitle1') }}
           </h5>
           <p>
-            Очень часто банки просто
-            не предоставляют кредиты тем, у кого мало активов или вообще не имеются таковые. И, как правило, банки
-            не занимаются выдачей кредитов на небольшие суммы, которые обычно ассоциируются с микрофинансированием. Наш
-            бизнес основан на философии, согласно которой даже небольшая сумма кредита может помочь разорвать порочный
-            круг бедности.
+            {{ $t('home.featureItemText1') }}
           </p>
         </div>
         <div class="main-features__box">
           <img src="../assets/img/main/investment.png" alt="">
           <h5>
-            Лучшие условия погашения
+            {{ $t('home.featureItemTitle2') }}
           </h5>
           <p>
-            Люди, которые занимают небольшие суммы денег, как правило, более ответственно относятся к выплате своих
-            долгов, потому что они действуют более осторожно.
+            {{ $t('home.featureItemText2') }}
           </p>
         </div>
         <div class="main-features__box">
           <img src="../assets/img/main/online-learning.png" alt="">
           <h5>
-            Дополнительное образование и здоровье
+            {{ $t('home.featureItemTitle2') }}
           </h5>
           <p>
-            Когда люди в беде, когда им срочно нужны быстрые деньги - для оплаты образования, для оплаты медицинских
-            услуг- у людей нет времени ждать. Таким образом, мы даем возможность нашим клиентам оплачивать быстрее,
-            когда им действительно нужны деньги.
+            {{ $t('home.featureItemText3') }}
           </p>
         </div>
       </div>
     </div>
 
     <div class="support_txt">
-      <h1>Наши миссия</h1>
+      <h1>{{ $t('home.missionTitle') }}</h1>
       <div class="support_txt__bord"/>
-      <p class="support_txt__subtitle">
-        Мы стремимся быть ведущей компанией в мире,
-        <span>ориентированной на клиентов</span>, предлагая физическим лицам удобный
-        доступ к инновационным и конкурентоспособным финансовым продуктам посредством различных каналов
-      </p>
+      <p class="support_txt__subtitle" v-html="$t('home.missionSubtitle')"></p>
       <div class="advantages_wrapper">
         <div class="advantages">
           <div class="advantages__single">
             <div class="img_title">
               <img src="../assets/img/main/111.png"/>
-              <h2>Мы превосходим все ожидания</h2>
+              <h2>{{ $t('home.missionTitle1') }}</h2>
             </div>
-            <p>
-              Мы стремимся упростить, улучшить и удивить партнеров и клиентов, с которыми мы работаем. Мы жаждем
-              совершенствоваться, нам любопытно, мы привержены делу, мы заботимся. Вот почему мы ставим наших клиентов
-              на первое место
-            </p>
+            <p>{{ $t('home.missionText1') }}</p>
           </div>
           <div class="advantages__single">
             <div class="img_title">
               <img src="../assets/img/main/222.png"/>
-              <h2>Мы ищем лучшее</h2>
+              <h2>{{ $t('home.missionTitle2') }}</h2>
             </div>
-            <p>
-              Мы сочетаем наш опыт с желанием учиться. Мы нацелены на инновации, чтобы наши продукты всегда опережали
-              продукты конкурентов. Мы стремимся улучшить каждый аспект нашей деятельности за счет творческого подхода
-              нашей команды
-            </p>
+            <p>{{ $t('home.missionText2') }}</p>
           </div>
           <div class="advantages__single">
             <div class="img_title">
               <img src="../assets/img/main/333.png"/>
               <h2>
-                Мы ценим <br/>
-                различия
+                {{ $t('home.missionTitle3') }}
               </h2>
             </div>
-            <p>
-              Многообразие и различия – вот, что делает нас сильнее. Мы стремимся привлечь самый широкий круг людей и
-              создать среду, в которой они могут процветать. Наша команда профессионалов – вот, что отличает нас, и мы
-              приветствуем вклад каждого из членов команды
-            </p>
+            <p>{{ $t('home.missionText3') }}</p>
           </div>
           <div class="advantages__single">
             <div class="img_title">
               <img src="../assets/img/main/444.png"/>
-              <h2>совершенствуем <br>
-                ся вместе</h2>
+              <h2>{{ $t('home.missionTitle4') }}</h2>
             </div>
-            <p>
-              Мы - семья, которая ценит честность и добросовестность. В этой семье мы предоставляем каждому возможность
-              достигать наилучших результатов, мы работаем вместе и вовлекаемся в процесс как одна сплоченная команда.
-              Вместе мы добиваемся большего
-            </p>
+            <p>{{ $t('home.missionText4') }}</p>
           </div>
         </div>
       </div>
@@ -232,7 +158,7 @@
     <representations-map style="margin-top: 120px"></representations-map>
 
     <div class="articles">
-      <h1>новости и события</h1>
+      <h1>{{ $t('newsTitle') }}</h1>
       <div class="articles_bord"/>
       <div class="articles__grid">
         <div class="single_item" v-for="n in news">
@@ -394,9 +320,9 @@ export default {
       text-transform: uppercase;
       color: #623f99;
       padding-bottom: 10px;
-      width: 160px;
       border-bottom: 2px solid #623f99;
       margin-bottom: 32px;
+      display: inline-block;
     }
 
     p {
@@ -417,11 +343,6 @@ export default {
 
       &:last-of-type {
         margin-bottom: 0;
-      }
-
-      span {
-        color: #623f99;
-        font-weight: 700;
       }
     }
 
@@ -530,11 +451,6 @@ export default {
     color: #ffffff;
     text-align: center;
     margin-bottom: 25px;
-
-    span {
-      color: #d5dd25;
-      font-weight: 700;
-    }
   }
 
   &__title {
@@ -543,8 +459,7 @@ export default {
     line-height: 30px;
     color: #d5dd25;
     text-align: center;
-    width: 715px;
-    margin: 0 auto 90px;
+    margin-bottom: 90px;
   }
 
   &__items {
@@ -699,21 +614,17 @@ export default {
 
   &__single {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-end;
-    height: 250px;
     background: #ffffff;
     box-shadow: 0px 4px 20px rgba(146, 115, 194, 0.5);
     border-radius: 8px;
-    padding-right: 20px;
-    padding-top: 30px;
+    padding: 30px 20px 25px 15px;
 
     .img_title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      width: 255px;
+      text-align: center;
+      width: 284px;
+      flex-shrink: 0;
 
       img {
         margin-bottom: 30px;
@@ -812,5 +723,22 @@ export default {
       top: -2px;
     }
   }
+}
+</style>
+
+<style lang="scss">
+.about .about__content p span {
+  font-weight: 700;
+  color: #623F99;
+}
+
+.feature .feature__text span {
+  color: #d5dd25;
+  font-weight: 700;
+}
+
+.support_txt .support_txt__subtitle span {
+  color: #d5dd25;
+  font-weight: 700;
 }
 </style>

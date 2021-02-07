@@ -1,19 +1,19 @@
 <template>
   <div class="footer" id="footer">
-    <h1>Связаться с нами</h1>
+    <h1>{{ $t('footerTitle') }}</h1>
     <div class="footer_bord" />
     <div class="content">
       <form class="form">
-        <label for="name">Ваше Имя</label>
-        <input id="name" type="text" placeholder="Как к Вам обращаться" v-model="full_name" />
-        <label for="mobile">Контактные данные</label>
+        <label for="name">{{ $t('footer.name') }}</label>
+        <input id="name" type="text" :placeholder="$t('footer.namePlaceHolder')" v-model="full_name" />
+        <label for="mobile">{{ $t('footer.contactData') }}</label>
         <input
           v-model="contact_data"
           id="mobile"
           type="text"
-          placeholder="Номер телефона или электронная почта"
+          :placeholder="$t('footer.phonePlaceHolder')"
         />
-        <button @click="sendRequest" :class="btnState ? 'active' : ''">оставить данные</button>
+        <button @click="sendRequest" :class="btnState ? 'active' : ''">{{ $t('footer.btn') }}</button>
         <div class="social">
           <img src="../assets/img/main/tweet.png" />
           <img src="../assets/img/main/inst.png" />
@@ -29,20 +29,17 @@
           frameborder="0"
         ></iframe>
         <div class="contacts__single">
-          <h2><img src="../assets/img/main/telephone.png" />номера</h2>
-          <a href="87273648170">+7 (727) 364 81 70</a>
-          <a href="87273648888">+7 (727) 364 88 88</a>
+          <h2><img src="../assets/img/main/telephone.png" />{{ $t('footer.phones') }}</h2>
+          <a href="tel: +7 (727) 364 81 70">+7 (727) 364 81 70</a>
+          <a href="tel: +7 (727) 364 88 88">+7 (727) 364 88 88</a>
         </div>
         <div class="contacts__single">
-          <h2><img src="../assets/img/main/mail.png" />Почтовый адрес</h2>
+          <h2><img src="../assets/img/main/mail.png" />{{ $t('footer.mail') }}</h2>
           <p>info@cashsoswiftly.com</p>
         </div>
         <div class="contacts__single">
-          <h2><img src="../assets/img/main/location.png" />адрес</h2>
-          <p>
-            РК, г. Алматы, <br />
-            мкр. Кайрат, 282
-          </p>
+          <h2><img src="../assets/img/main/location.png" />{{ $t('footer.address') }}</h2>
+          <p v-html="$t('footer.location')"></p>
         </div>
       </div>
     </div>
