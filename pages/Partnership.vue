@@ -3,44 +3,35 @@
     <a class="partners__btn"
             :class="btnStop ? 'partners__btn--stop' : ''"
             href="http://185.100.65.231/api/download/">
-      Скачать вопросник <img src="../assets/img/about/drop.png"/>
+      {{ $t('partnership.download') }} <img src="../assets/img/about/drop.png"/>
     </a>
     <div class="partner-welcome">
       <div class="partner-welcome__inner">
         <p>
-          Иногда мы оказываемся в такой ситуации, когда нам нужен толчок для достижения наших целей. Иногда мы просим
-          помощи и чувствуем пустоту. А иногда мы хотим протестировать наши возможности, планы и для этого нам нужен
-          партнер.
+          {{ $t('partnership.welcomeText1') }}
         </p>
         <p>
-          Мы, CSS, можем подтолкнуть вас к успеху, мы всегда протянем вам руку и будем сотрудничать с вами, даже если вы
-          прибываете в сомнениях.
+          {{ $t('partnership.welcomeText2') }}
         </p>
         <p>
-          Когда наш клиент справится и начнет помогать другим, мы оглянемся назад, когда мы были рядом, чтобы помогать и
-          поддерживать.
+          {{ $t('partnership.welcomeText3') }}
         </p>
       </div>
     </div>
 
     <div class="terms">
-      <h1 class="title">Условия сотрудничества</h1>
+      <h1 class="title">{{ $t('partnership.coopHeading') }}</h1>
       <div class="custom_border"/>
       <p class="title_txt">
-        Мы постоянно развиваем наши продукты, применяя новейшие инновационые
-        технологии и покоряем международные рынки.
+        {{ $t('partnership.coopText') }}
       </p>
       <div class="who_people">
         <div class="who_people__box">
           <div class="vertical_txt">
-            <p>ТЕ, КТО</p>
+            <p>{{ $t('partnership.thoseWho') }}</p>
           </div>
           <div class="normal_txt">
-            <p>
-              Уже <span>присутствуют на рынке микро-займов</span> <br/>
-              и хотят автоматизации,оптиматизации <br/>
-              расходов и привлечения новых клиентов.
-            </p>
+            <p v-html="$t('partnership.coopItemText1')"></p>
             <img src="../assets/img/partnership/cogs.png"/>
           </div>
         </div>
@@ -51,30 +42,20 @@
         <div class="who_people__box">
           <div class="normal_txt">
             <img src="../assets/img/partnership/global.png"/>
-            <p style="text-align: right">
-              Являются предпринимателями и <span>хотят <br>
-              стать частью</span>
-              самой развитой, <br>
-              автоматизированной <br>
-              клиентоориентиванной <span>бизнес-модели</span>.
-            </p>
+            <p style="text-align: right" v-html="$t('partnership.coopItemText2')"></p>
           </div>
           <div class="vertical_txt left_side">
-            <p>ТЕ, КТО</p>
+            <p>{{ $t('partnership.thoseWho') }}</p>
           </div>
         </div>
       </div>
       <div class="who_people">
         <div class="who_people__box">
           <div class="vertical_txt">
-            <p>ТЕ, КТО</p>
+            <p>{{ $t('partnership.thoseWho') }}</p>
           </div>
           <div class="normal_txt">
-            <p style="text-align: left">
-              Готовы на <span>совместную деятельность</span>, <br>
-              разделяя с нами все риски и прибыль, <br>
-              нацелены на <span>успех</span>.
-            </p>
+            <p style="text-align: left" v-html="$t('partnership.coopItemText3')"></p>
             <img src="../assets/img/partnership/handshake.png"/>
           </div>
         </div>
@@ -86,91 +67,51 @@
       <div class="statistics__content">
         <img src="../assets/img/partnership/percentage.png"/>
         <div class="statistics__content__txt">
-          <p>
-            Процесс от запуска проекта до выхода на окупаемость занимает
-            <span>6-8 месяцев</span>, <br/>
-            а уже <span>через год</span> наша бизнес модель начинает приносить
-            прибыль.
-          </p>
-          <p>Доля постоянных клиентов <span>в среднем 60% - 75%</span>.</p>
-          <p>
-            Запуск рекламы, присутствие и продвижение в соц. Сетях, а также
-            проведение промо-акций <br/>
-            <span>увеличивают количество займов на 20%</span>.
-          </p>
+          <p v-html="$t('partnership.fluidText1')"></p>
+          <p v-html="$t('partnership.fluidText2')"></p>
+          <p v-html="$t('partnership.fluidText3')"></p>
         </div>
         <img src="../assets/img/products/coins.png"/>
       </div>
     </div>
     <div class="howto">
-      <h2>как работает бизнес-модель (на примере терминала)</h2>
-      <img src="../assets/img/partnership/howto.png"/>
+      <h2>{{ $t('partnership.modelHeading') }}</h2>
+      <img src="../assets/img/partnership/howto.png" v-if="$i18n.locale === 'ru'"/>
+      <img src="../assets/img/partnership/howto-en.png" v-else/>
 
-      <h1 class="title">выгоды от использования бизнес-модели</h1>
+      <h1 class="title">{{ $t('partnership.benefitHeading') }}</h1>
       <div class="custom_border"/>
       <div class="model_types">
         <div class="model_types__single">
           <div class="model_title first_model_title">
-            <h2>для <span>клиента</span></h2>
+            <h2 v-html="$t('partnership.modelBoxTitle1')"></h2>
           </div>
           <div class="model_descr">
-            <p>
-              - Получает заём и снимает <br/>
-              наличные
-            </p>
-            <p>
-              - Оплачивает покупки
-            </p>
-            <p>
-              - Осуществляет платежи за услуги
-            </p>
+            <p v-html="$t('partnership.modelBoxText1')"></p>
+            <p v-html="$t('partnership.modelBoxText2')"></p>
+            <p v-html="$t('partnership.modelBoxText3')"></p>
           </div>
         </div>
         <div class="model_types__single">
           <div class="model_title second_model_title">
-            <h2>для <span>торговых центров</span></h2>
+            <h2 v-html="$t('partnership.modelBoxTitle2')"></h2>
           </div>
           <div class="model_descr">
-            <p>
-              - Увеличивается количество <br/>
-              посещений
-            </p>
-            <p>
-              - Увеличивается сумма покупок <br/>
-              новых и постоянных клиентов
-            </p>
-            <p>
-              - Увеличение продаж
-            </p>
-            <p>
-              - Увеличение прибыли
-            </p>
+            <p v-html="$t('partnership.modelBoxText4')"></p>
+            <p v-html="$t('partnership.modelBoxText5')"></p>
+            <p v-html="$t('partnership.modelBoxText6')"></p>
+            <p v-html="$t('partnership.modelBoxText7')"></p>
           </div>
         </div>
         <div class="model_types__single">
           <div class="model_title third_model_title">
-            <h2>для <span>cashsoswiftly</span></h2>
+            <h2 v-html="$t('partnership.modelBoxTitle3')"></h2>
           </div>
           <div class="model_descr">
-            <p>
-              - Минимальные затраты на <br/>
-              привлечение клиентов
-            </p>
-            <p>
-              - Большее количество <br/>
-              качественных клиентов <br/>
-              благодаря мобильному <br>
-              скорингу
-            </p>
-            <p>
-              - Низкий процент <br>
-              недовольных клиентов
-            </p>
-            <p>
-              - Займ выдается там, где <br>
-              клиенту удобно получить <br>
-              деньги
-            </p>
+            <p v-html="$t('partnership.modelBoxText8')"></p>
+            <p v-html="$t('partnership.modelBoxText9')"></p>
+            <p v-html="$t('partnership.modelBoxText10')"></p>
+            <p v-html="$t('partnership.modelBoxText11')"></p>
           </div>
         </div>
       </div>
@@ -178,120 +119,102 @@
     </div>
 
     <div class="download_ques">
-      <p>
-        ВОПРОСНИК ДЛЯ ПРЕДВАРИТЕЛЬНОГО ИЗУЧЕНИЯ РЫНКА <br/>
-        «МИКРО-ЗАЙМОВ ДО ЗАРПЛАТЫ» В ВАШЕЙ СТРАНЕ
-      </p>
+      <p v-html="$t('partnership.fluidHeading')"></p>
       <a href="http://185.100.65.231/api/download/" class="partners__btn download_ques__btn">
-        Скачать вопросник <img src="../assets/img/about/drop.png"/>
+        {{ $t('partnership.download') }} <img src="../assets/img/about/drop.png"/>
       </a>
     </div>
 
-    <h1 class="title">РАСПРЕДЕЛЕНИЕ РАСХОДОВ</h1>
+    <h1 class="title">{{ $t('partnership.costHeading') }}</h1>
     <div class="custom_border"/>
-    <p class="costs_txt">
-      РАСХОДЫ НА СОВМЕСТНОЕ ФИНАНСИРОВАНИЕ <br>
-      <span>70%</span> - CASHSOSWIFTLY
-      <span>30%</span> - МЕСТНЫЙ ПАРТНЕР <br>
-      (расходы до распределения прибыли): <br>
-    </p>
+    <p class="costs_txt" v-html="$t('partnership.costText')"></p>
     <div class="cost_grid">
       <div class="cost_grid__single">
         <img src="../assets/img/partnership/1.png"/>
         <p>
-          ПОКУПКА ТЕРМИНАЛОВ
+          {{ $t('partnership.costBoxTitle1') }}
         </p>
       </div>
       <div class="cost_grid__single">
         <img src="../assets/img/partnership/2.png"/>
         <p>
-          ОБОРОТНЫЕ СРЕДСТВА
+          {{ $t('partnership.costBoxTitle2') }}
         </p>
       </div>
       <div class="cost_grid__single">
         <img src="../assets/img/partnership/3.png"/>
-        <p>
-          АРЕНДА МЕСТА ДЛЯ УСТАНОВКИ <br/>
-          ТЕРМИНАЛОВ
-        </p>
+        <p v-html="$t('partnership.costBoxTitle3')"></p>
       </div>
       <div class="cost_grid__single">
         <img src="../assets/img/partnership/4.png"/>
         <p>
-          ЗАРАБОТНАЯ ПЛАТА ПЕРСОНАЛА
+          {{ $t('partnership.costBoxTitle4') }}
         </p>
       </div>
       <div class="cost_grid__single">
         <img src="../assets/img/partnership/6.png"/>
         <p>
-          АРЕНДА ОФИСА
+          {{ $t('partnership.costBoxTitle5') }}
         </p>
       </div>
     </div>
     <div class="list_grid">
       <div class="list_grid__single">
         <div class="list_grid__single__header fir_header">
-          <h2>РАСХОДЫ <span>ПАРТНЕРА</span></h2>
+          <h2 v-html="$t('partnership.localPartnerHeading')"></h2>
         </div>
         <div class="list_grid__single__content">
           <p>
-            1. Изучение законодательства страны. <br/>
+            {{ $t('partnership.localText1') }} <br/>
             <br/>
 
-            2. Изучение рынка страны.<br/>
+            {{ $t('partnership.localText2') }}<br/>
             <br/>
 
-            3. Регистрация совместного предприятия (СП) <br>
-            (формирование уставного капитала 70/30) <br>
+            {{ $t('partnership.localText3') }} <br>
             <br/>
 
-            4. Получение лицензии и согласований срегуляторами финансового
-            рынка, если это требуется по законодательству страны. <br/>
+            {{ $t('partnership.localText4') }} <br/>
             <br/>
 
-            5. Открытие офиса и найм сотрудников <br/>
+            {{ $t('partnership.localText5') }} <br/>
             <br/>
           </p>
         </div>
       </div>
       <div class="list_grid__single">
         <div class="list_grid__single__header sec_header">
-          <h2>РАСХОДЫ <span>cashsoswiftly</span></h2>
+          <h2 v-html="$t('partnership.cashSosHeading')"></h2>
         </div>
         <div class="list_grid__single__content">
-          <h2>Адаптация и интеграция программного обеспечения под страну:</h2>
+          <h2>{{ $t('partnership.cashSosTitle1') }}</h2>
           <p>
-            1. Интеграция со всеми базами данных <br/>
-            2. Интеграция с платежными сервисами <br/>
-            3. Настройка скорринговых карт <br/>
-            4. Адаптация технологии сканирования под паспорт или удостоверение личности страны <br/>
-            5. Адаптация программного обеспечения для считывания банкнот страны <br/>
-            6. Языковая настройка <br/>
-            7. Настройка и адаптация коллекторской системы <br/>
-            8. Настройка и адаптация IT инфраструктуры <br/>
-            9. ООбучение сотрудников СП <br/>
+            {{ $t('partnership.cashSosText1') }} <br/>
+            {{ $t('partnership.cashSosText2') }} <br/>
+            {{ $t('partnership.cashSosText3') }} <br/>
+            {{ $t('partnership.cashSosText4') }} <br/>
+            {{ $t('partnership.cashSosText5') }} <br/>
+            {{ $t('partnership.cashSosText6') }} <br/>
+            {{ $t('partnership.cashSosText7') }} <br/>
+            {{ $t('partnership.cashSosText8') }} <br/>
+            {{ $t('partnership.cashSosText9') }} <br/>
           </p>
           <h2>
-            Расходы на поддержание автоматизированной системы управления
-            операционной деятельности СП:
+            {{ $t('partnership.cashSosTitle2') }}
           </h2>
           <p>
-            1. Постоянный анализ и развитие системы, управляющей коллекторской
-            деятельностью <br/>
-            2. Управление IT программой для бесперебойной выдачи займов в режиме 24/7 <br/>
-            3. Обеспечение автоматического скоринга клиентов в рамках установленного временного лимита<br/>
-            4. Клиентская поддержка (связанная с IT инфраструктурой СП)<br/>
-            5. Постоянное улучшение и доработка программного обеспечения<br/>
-            6. Полная автоматизация деятельности, находящейся в сфере ответственности партнера и рекомендации по ее
-            усовершенствованию
-            <br/>
-            7. Рекомендации по проведению маркетинговых и прочих мероприятий на основе опыта работ с клиентами
-            <br/>
+            {{ $t('partnership.cashSosText10') }} <br/>
+            {{ $t('partnership.cashSosText11') }} <br/>
+            {{ $t('partnership.cashSosText13') }} <br/>
+            {{ $t('partnership.cashSosText14') }} <br/>
+            {{ $t('partnership.cashSosText15') }} <br/>
+            {{ $t('partnership.cashSosText16') }} <br/>
+            {{ $t('partnership.cashSosText17') }} <br/>
           </p>
         </div>
       </div>
     </div>
-    <h1 class="title">Наши патенты и сертификаты</h1>
+    <h1 class="title">{{ $t('partnership.certificatesHeading') }}</h1>
     <div class="custom_border"/>
     <div class="patents">
       <img src="../assets/img/partnership/pattent1.png"/>
@@ -350,7 +273,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 265px;
+    width: 335px;
     height: 56px;
     text-decoration: none;
     background: #d5dd25;
@@ -471,7 +394,8 @@ export default {
         line-height: 28px;
         color: #623f99;
         transform: rotate(-90deg);
-        width: 100px;
+        width: 155px;
+        text-align: center;
       }
     }
 
@@ -518,11 +442,6 @@ export default {
       text-align: center;
       text-transform: uppercase;
       color: #FFFFFF;
-
-      span {
-        color: #d5dd25;
-        font-weight: 700;
-      }
 
       &:nth-child(2) {
         margin: 20px 0;
@@ -583,10 +502,6 @@ export default {
         text-transform: uppercase;
         color: #d5dd25;
         margin-bottom: 0;
-
-        span {
-          @include bold;
-        }
       }
     }
 
@@ -662,10 +577,6 @@ export default {
   text-transform: uppercase;
   color: #131313;
   margin-bottom: 60px;
-
-  span {
-    color: #623f99;
-  }
 }
 
 .cost_grid {
@@ -719,10 +630,6 @@ export default {
         line-height: 28px;
         text-align: center;
         text-transform: uppercase;
-
-        span {
-          @include bold;
-        }
       }
     }
 
@@ -784,5 +691,24 @@ export default {
   img {
     margin: 0 20px;
   }
+}
+</style>
+
+<style>
+.statistics .statistics__content p span {
+  color: #d5dd25;
+  font-weight: 700;
+}
+
+.model_types .model_title h2 span {
+  font-weight: 700;
+}
+
+.costs_txt span {
+  color: #623f99;
+}
+
+.list_grid .list_grid__single .list_grid__single__header h2 span {
+  font-weight: 700;
 }
 </style>

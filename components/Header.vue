@@ -54,12 +54,12 @@
       </div>
       <div class="lang_local_wrapper" v-click-outside="hide">
         <div @click="toggleLang" class="lang_local">
-          <img v-if="langState" src="../assets/img/main/rus.png" />
+          <img v-if="$i18n.locale === 'ru'" src="../assets/img/main/rus.png" />
           <img v-else src="../assets/img/main/en.png" />
           <img src="../assets/img/main/lang_dropdown.png" />
         </div>
         <div v-if="langDrop" class="lang_local_wrapper__dropdown">
-          <img v-if="langState" @click="changeLang('en')" src="../assets/img/main/en.png" />
+          <img v-if="$i18n.locale === 'ru'" @click="changeLang('en')" src="../assets/img/main/en.png" />
           <img v-else @click="changeLang('ru')" src="../assets/img/main/rus.png" />
         </div>
       </div>
@@ -108,6 +108,7 @@ export default {
       }
       this.langDrop = false;
       // window.location.reload();
+      console.log(this.$i18n.locale);
     },
     hide() {
       this.langDrop = false;

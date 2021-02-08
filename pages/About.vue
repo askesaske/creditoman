@@ -1,9 +1,6 @@
 <template>
   <div class="About">
-    <h1 class="About__title">
-      От простой идеи <br>
-      к Международной Fintech компании
-    </h1>
+    <h1 class="About__title" v-html="$t('about.heading')"></h1>
     <div class="custom_border"/>
     <div class="biography">
       <div class="biography__author">
@@ -12,144 +9,116 @@
           src="../assets/img/about/face.png"
         />
         <p class="biography__author__name">
-          <span>Родостовец В.Н.</span> <br/>
-          Учредитель, CEO
+          <span>{{ $t('about.ceoName') }}</span> <br/>
+          {{ $t('about.ceoPosition') }}
         </p>
         <div class="description">
           <p>
-            Еще 4 года назад, я уже был уверен что будущее не просто за IT технологиями, а за теми технологиями, которые
-            позволят ускорить и облегчить бизнес- процессы. <br/>
+            {{ $t('about.biography1') }} <br/>
             <br/>
 
-            Благодаря совместным усилиям с моим партнером Павлом Гребенниковым, который является разработчиком нашего
-            запатентованного программного обеспечения, была основана компания, которая чуть более чем за 2 года стала
-            топовым игроком Казахстанского offline и online рынка займов.<br/>
+            {{ $t('about.biography2') }}<br/>
             <br/>
 
-            Успех нашей компании заключается в инновационной автоматизированной бизнес-модели полного цикла, уникальном
-            оборудовании и программном обеспечении, которые значительно облегчают и ускоряют процесс выдачи кредита по
-            сравнению с традиционными методами кредитования.<br/>
+            {{ $t('about.biography3') }}<br/>
             <br/>
 
-            Модель настолько успешно показала себя в Казахстане, что было принято решение об экспансии на зарубежные
-            рынки. Так была создана международная группа компаний CASHSOSWIFTLY с торговой маркой KREDITOMAT, которая
-            встала в ряд с действующими крупными международными Fintech-компаниями.<br/>
+            {{ $t('about.biography4') }}<br/>
             <br/>
 
-            Компании, входящие в Группу не только разделяют схожие бизнес-цели, видение и ценности, но и бизнес-процессы
-            и нацеленность на развитие партнерских отношений.<br/>
+            {{ $t('about.biography5') }}<br/>
             <br/>
 
-            Мы фокусируемся на свободе действий, предпринимательстве и отличном знании местных рынков. К ведению бизнеса
-            мы подходим очень ответственно – соблюдая законы и выполняя все необходимые обязательства, как перед
-            государством, так и перед нашими партнерами и клиентами.<br/>
+            {{ $t('about.biography6') }}<br/>
             <br/>
 
-            Я убежден, что внедрение высокотехнологичных решений и продуктов в реалиях сегодняшнего дня должно стать
-            неотъемлемой составляющей бизнес-процессов в любой стране и компании, претендующей на лидерство. Именно
-            такая бизнес-модель способна обеспечить долгосрочное стабильное развитие в современном мире.<br/>
+            {{ $t('about.biography7') }}<br/>
             <br/>
           </p>
         </div>
       </div>
     </div>
     <div class="priorities">
-      <h1>Наши ценности</h1>
+      <h1>{{ $t('about.valuesHeading') }}</h1>
       <div class="bord_title"/>
       <div class="grid_items">
         <div class="grid_items__single">
           <img src="../assets/img/main/honest.png"/>
-          <h2>Честность</h2>
+          <h2>{{ $t('about.valueTitle1') }}</h2>
           <div class="bord_card"/>
           <p>
-            Мы знаем, что доверие является основополагающим принципом, и чтобы
-            нам доверяли, мы должны оставаться компетентными и честными.
+            {{ $t('about.valueText1') }}
           </p>
         </div>
         <div class="grid_items__single">
           <img src="../assets/img/main/clarity.png"/>
-          <h2>Прозрачность</h2>
+          <h2>{{ $t('about.valueTitle2') }}</h2>
           <div class="bord_card"/>
           <p>
-            Мы раскрываем все правила и условия продуктов простым языком на
-            нашем веб-сайте и в различных точках обслуживания.
+            {{ $t('about.valueText2') }}
           </p>
         </div>
         <div class="grid_items__single">
           <img src="../assets/img/main/resp.png"/>
-          <h2>Подотчетность</h2>
+          <h2>{{ $t('about.valueTitle3') }}</h2>
           <div class="bord_card"/>
           <p>
-            Мы осознаем, что в конечном итоге мы несем ответственность перед
-            нашими клиентами, и мы неуклонно ориентируемся на максимальное
-            долгосрочное партнерство и ценности.
+            {{ $t('about.valueText3') }}
           </p>
         </div>
         <div class="grid_items__single">
           <img src="../assets/img/main/coop.png"/>
-          <h2>Сотрудничество</h2>
+          <h2>{{ $t('about.valueTitle4') }}</h2>
           <div class="bord_card"/>
           <p>
-            Мы создаем команды, чтобы генерировать лучшие идеи и действовать как
-            ответственные партнеры со всеми нашими клиентами и служить более
-            широким интересам общества.
+            {{ $t('about.valueText4') }}
           </p>
         </div>
       </div>
     </div>
     <div class="cachsoswiftly">
-      <h1>Наша команда</h1>
+      <h1>{{ $t('about.teamHeading') }}</h1>
       <div class="custom_border"/>
       <div class="cachsoswiftly__text">
-        <p class="cachsoswiftly__subtitle">
-          CASHSOSWIFTLY в первую очередь — это команда трудолюбивых людей, которые хорошо <br>
-          знают и верят в то, что они делают. Наша команда насчитывает около 1000 человек.
-        </p>
-        <p class="cachsoswiftly__subtitle">
-          Мы преодолели множество проблем, которые поначалу казались невозможными, и именно <br>
-          это позволило стать теми, кем мы являемся.
-        </p>
+        <p class="cachsoswiftly__subtitle" v-html="$t('about.teamText1')"></p>
+        <p class="cachsoswiftly__subtitle" v-html="$t('about.teamText2')"></p>
       </div>
       <img
         class="cachsoswiftly__img"
         src="../assets/img/about/swiftly.png"
         ref="counter_div"
+        v-if="$i18n.locale === 'ru'"
       />
+      <img v-else src="../assets/img/about/swiftly-en.png" alt="">
     </div>
     <div class="counter" id="counter">
-      <h1>На сегодняшний день CASHSOSWIFTLY это:</h1>
+      <h1>{{ $t('about.todayHeading') }}</h1>
 
       <div class="counter__grid">
         <div class="counter__grid__single">
           <animate-number :number="terminalCount"></animate-number>
-          <p>терминалов</p>
+          <p>{{ $t('about.terminalCount') }}</p>
         </div>
         <div class="counter__grid__single">
           <animate-number :number="countryCount"></animate-number>
-          <p>стран</p>
+          <p>{{ $t('about.countryCount') }}</p>
         </div>
         <div class="counter__grid__single">
           <animate-number :number="staffCount"></animate-number>
-          <p>
-            общая штатная <br/>
-            численность
-          </p>
+          <p v-html="$t('about.staffCount')"></p>
         </div>
         <div class="counter__grid__single">
           <div>
             <animate-number :number="cashCount"></animate-number>
-            <span>млн</span>
+            <span>{{ $t('about.million') }}</span>
           </div>
-          <p>
-            USD выданных <br/>
-            кредитов
-          </p>
+          <p v-html="$t('about.creditCount')"></p>
         </div>
       </div>
     </div>
     <div class="video_cont">
       <button>
-        Профиль компании<img src="../assets/img/about/drop.png"/>
+        {{ $t('about.profileBtn') }}<img src="../assets/img/about/drop.png"/>
       </button>
       <div class="video_cont__wrapper">
         <div class="video_cont__box">

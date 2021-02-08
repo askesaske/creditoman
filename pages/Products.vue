@@ -1,6 +1,6 @@
 <template>
   <div class="Products">
-    <h1 class="Products__title">Мобильное приложение <img src="../assets/img/products/kreditomat-txt.png" alt=""></h1>
+    <h1 class="Products__title">{{ $t('products.heading1') }} <img src="../assets/img/products/kreditomat-txt.png" alt=""></h1>
     <div class="custom_border"/>
     <div class="welcome_img">
       <div class="app">
@@ -10,36 +10,26 @@
           <img src="../assets/img/products/market.png"/>
         </div>
       </div>
-      <img src="../assets/img/products/circles.png"/>
+      <img src="../assets/img/products/circles.png" v-if="$i18n.locale === 'ru'"/>
+      <img src="../assets/img/products/circles-en.png" v-else>
     </div>
     <div class="advantages">
-      <h2>преимущества использования kreditomat.kz</h2>
+      <h2>{{ $t('products.advOfAppTitle') }}</h2>
       <div class="advantages__grid">
         <div class="advantages__grid__single">
-          <h3>Нет аналогов</h3>
+          <h3>{{ $t('products.featureTitle1') }}</h3>
           <div class="grid_border"/>
-          <p>
-            Уникальный FinTech-продукт <br/>
-            Иновационный на мировом рынке
-          </p>
+          <p v-html="$t('products.featureText1')"></p>
         </div>
         <div class="advantages__grid__single">
-          <h3>
-            новое решение в <br/>
-            маркетинге
-          </h3>
+          <h3 v-html="$t('products.featureTitle2')"></h3>
           <div class="grid_border"/>
-          <p>
-            100% эффективный таргетинг, <br/>
-            Качественные клиенты
-          </p>
+          <p v-html="$t('products.featureText2')"></p>
         </div>
         <div class="advantages__grid__single">
-          <h3>Выгодно для всех</h3>
+          <h3>{{ $t('products.featureTitle3') }}</h3>
           <div class="grid_border"/>
-          <p>
-            МФО - Клиент - Банк
-          </p>
+          <p v-html="$t('products.featureText3')"></p>
         </div>
       </div>
     </div>
@@ -48,10 +38,7 @@
         <div class="image_wrapper">
           <img src="../assets/img/products/time.png"/>
         </div>
-        <p>
-          Надежно распознает, верифицирует, оценивает потенциального заёмщика и выдает первый займ
-          <span>меньше чем за 1 минуту ПЕРВЫЙ ЗАЁМ, а последующие займы - за 30 секунд</span>
-        </p>
+        <p v-html="$t('products.timingFeature')"></p>
         <div class="image_wrapper">
           <img src="../assets/img/products/coins.png"/>
         </div>
@@ -59,51 +46,49 @@
     </div>
     <div class="terminal">
       <h1>
-        Терминалы выдачи займов <img src="../assets/img/products/kreditomat-txt.png" alt="">
+        {{ $t('products.heading2') }} <img src="../assets/img/products/kreditomat-txt.png" alt="">
       </h1>
       <div class="custom_border"/>
-      <img class="terminal__image" src="../assets/img/products/terminal.png"/>
+      <img class="terminal__image" src="../assets/img/products/terminal.png" v-if="$i18n.locale === 'ru'"/>
+      <img class="terminal__image" src="../assets/img/products/terminal-en.png" v-else/>
     </div>
     <div class="term_adv">
-      <h2>Преимущества использования терминала</h2>
+      <h2>{{ $t('products.advOfAlmTitle') }}</h2>
       <div class="term_adv__grid">
         <div class="term_adv__grid__single">
           <img src="../assets/img/products/eye.png"/>
           <p>
-            Наши терминалы «НА-ВИДУ» в торговых центрах, метро и наиболее
-            проходимых местах
+            {{ $t('products.itemText1') }}
           </p>
         </div>
         <div class="term_adv__grid__single">
           <img src="../assets/img/products/shop_hand.png"/>
           <p>
-            Места расположения терминалов стимулируют клиента на займ и совершение с помощью него ИМПУЛЬСИВНОЙ ПОКУПКИ
+            {{ $t('products.itemText2') }}
           </p>
         </div>
         <div class="term_adv__grid__single">
           <img src="../assets/img/products/money_hand.png"/>
           <p>
-            НЕ ТРЕБУЕТСЯ НИКАКОЙ РЕКЛАМЫ, один терминал выдает до 500 кредитов в
-            сутки
+            {{ $t('products.itemText3') }}
           </p>
         </div>
         <div class="term_adv__grid__single">
           <img src="../assets/img/products/tv.png"/>
           <p>
-            Всеми процессами в терминале управляет уникальное программное
-            обеспечение
+            {{ $t('products.itemText4') }}
           </p>
         </div>
         <div class="term_adv__grid__single">
           <img src="../assets/img/products/criminal.png"/>
           <p>
-            Отсутствие кредитных менеджеров и мошенничества
+            {{ $t('products.itemText5') }}
           </p>
         </div>
         <div class="term_adv__grid__single">
           <img src="../assets/img/products/debit_cart.png"/>
           <p>
-            Нет комиссий за снятие наличных и погашение
+            {{ $t('products.itemText6') }}
           </p>
         </div>
       </div>
@@ -111,36 +96,28 @@
     <div class="dbl_terminal">
       <img src="../assets/img/products/dbl_terminal.png"/>
       <div class="dbl_terminal__txt">
-        <h2>требования к локации под терминал</h2>
+        <h2>{{ $t('products.requireTerminalTitle') }}</h2>
         <div class="cus_brd"/>
-        <p>Охрана</p>
-        <p>Наличие возможности подключения к розетке</p>
-        <p>Наличие видеонаблюдения</p>
-        <p>Доступность резервного питания</p>
-        <p>Возможность подключения мобильного интернета (хороший сигнал)</p>
+        <p>{{ $t('products.require1') }}</p>
+        <p>{{ $t('products.require2') }}</p>
+        <p>{{ $t('products.require3') }}</p>
+        <p>{{ $t('products.require4') }}</p>
+        <p>{{ $t('products.require5') }}</p>
       </div>
     </div>
     <div class="atm_txt">
       <div class="atm_txt__content">
         <img src="../assets/img/products/atm.png"/>
         <div>
-          <p>
-            - Размещайте терминалы в местах с высокой проходимостью
-          </p>
-          <p>
-            - Размещайте терминалы у главного входа или возле супермаркетов
-            (большие продуктовые магазины внутри ТЦ, ТРЦ)
-          </p>
-          <p>
-            - Вы можете разместить терминал в зоне банкоматов. <br>
-            Обычно, таких зон в ТЦ, ТРЦ несколько, выберите самую популярную (обычно возле супермаркета)
-          </p>
+          <p v-html="$t('products.fluidText1')"></p>
+          <p v-html="$t('products.fluidText2')"></p>
+          <p v-html="$t('products.fluidText3')"></p>
         </div>
       </div>
     </div>
     <div class="click_adv">
       <h1>
-        Мобильное приложение <img src="../assets/img/products/click-logo.png" alt="">
+        {{ $t('products.heading3') }} <img src="../assets/img/products/click-logo.png" alt="">
       </h1>
       <div class="custom_border"/>
       <div class="welcome_img">
@@ -151,43 +128,29 @@
             <img src="../assets/img/products/market.png"/>
           </div>
         </div>
-        <img src="../assets/img/products/steps.png"/>
+        <img src="../assets/img/products/steps.png" v-if="$i18n.locale === 'ru'"/>
+        <img src="../assets/img/products/steps-en.png" v-else/>
       </div>
       <div class="adv_click">
         <h2>
-          преимущества использования click advance
+          {{ $t('products.advOfClickTitle') }}
         </h2>
         <div class="adv_click__grid">
           <div class="adv_click__grid__single">
             <img src="../assets/img/products/handshake.png"/>
-            <p>
-              Возврат кредитов <br>
-              гарантирует <br>
-              компания-работодатель на <br>
-              основании подписанного <br>
-              договора
-            </p>
+            <p v-html="$t('products.itemText7')"></p>
           </div>
           <div class="adv_click__grid__single">
             <img src="../assets/img/products/piechart.png"/>
-            <p>
-              Мы можем предложить клиентам низкие и выгодные процентные ставки по
-              сравнению с другими кредитными продуктами.
-            </p>
+            <p v-html="$t('products.itemText8')"></p>
           </div>
           <div class="adv_click__grid__single">
             <img src="../assets/img/products/regression.png"/>
-            <p>
-              Поскольку процент проблемных кредитов очень низкий, расходы на содержание штата сотрудников по взысканию и
-              другие связанные с этим расходы минимальны
-            </p>
+            <p v-html="$t('products.itemText9')"></p>
           </div>
           <div class="adv_click__grid__single">
             <img src="../assets/img/products/money_talk.png"/>
-            <p>
-              Таким образом, мы предлагаем удобный продукт и получаем 45-50% постоянных клиентов, которые постоянно им
-              пользуются
-            </p>
+            <p v-html="$t('products.itemText10')"></p>
           </div>
         </div>
       </div>
@@ -278,11 +241,10 @@ export default {};
       box-shadow: 0px 4px 20px rgba(146, 115, 194, 0.5);
       border-radius: 4px;
       text-align: center;
-      padding-top: 50px;
-
-      &:nth-child(2) {
-        padding-top: 27px;
-      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       h3 {
         @include bold;
@@ -329,10 +291,6 @@ export default {};
       text-transform: uppercase;
       color: #FFFFFF;
       max-width: 965px;
-
-      span {
-        color: #d5dd25;
-      }
     }
   }
 
@@ -558,5 +516,11 @@ export default {};
       }
     }
   }
+}
+</style>
+
+<style>
+.sup_txt .sup_txt__content p span {
+  color: #d5dd25;
 }
 </style>
