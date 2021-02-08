@@ -1,22 +1,22 @@
 <template>
   <div class="representations">
     <h3 class="representations__title">
-      {{ $t('branches') }}
+      {{ $t('branchesTitle') }}
     </h3>
 
     <div class="representations__map">
       <div v-for="count in countries">
         <img :src="count.country_position_on_map"
              alt=""
-             v-if="country === count.country">
+             v-if="country === count.eng_lang_country">
       </div>
       <div class="representations__countries">
         <img :src="c.country_flag"
              id="clicked-flag"
              v-for="c in countries"
              alt=""
-             @click="chooseCountry(c.country)"
-             :class="country === c.country ? 'active' : ''">
+             @click="chooseCountry(c.eng_lang_country)"
+             :class="country === c.eng_lang_country ? 'active' : ''">
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@ export default {
   },
   watch: {
     currentIndex() {
-      let clickedFlag = this.countries[this.currentIndex].country;
+      let clickedFlag = this.countries[this.currentIndex].eng_lang_country;
       this.chooseCountry(clickedFlag);
     }
   },

@@ -164,12 +164,12 @@
         <div class="single_item" v-for="n in news">
           <img :src="n.img"/>
           <p class="single_item__date">{{ n.created_date | moment("YYYY - MM - DD") }}</p>
-          <h2 class="single_item__title">{{ n.title }}</h2>
-          <p class="single_item__descr">
-            {{ n.short_text }}
-          </p>
+          <h2 class="single_item__title" v-if="$i18n.locale === 'ru'">{{ n.rus_lang_title }}</h2>
+          <h2 class="single_item__title" v-else>{{ n.eng_lang_title }}</h2>
+          <p class="single_item__descr" v-if="$i18n.locale ==='ru'">{{ n.rus_lang_short_text }}</p>
+          <p class="single_item__descr" v-else>{{ n.eng_lang_short_text }}</p>
           <p class="single_item__more" @click="openModal(n)">
-            Читать больше
+            {{ $t('home.readMore') }}
           </p>
         </div>
       </div>

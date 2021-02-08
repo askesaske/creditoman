@@ -51,7 +51,8 @@
     "missionTitle3": "We appreciate differences",
     "missionText3": "Diversity and difference are what make us stronger. We are committed to attracting the widest range of people and providing an environment where they can flourish. Our blend of people is what sets us apart and we embrace their contributions",
     "missionTitle4": "We grow\ntogether",
-    "missionText4": "We are a family that values honesty and integrity. Across our network, we treat others in the way we would like to be treated. We empower each person to do what it takes to deliver and we collaborate and engage as one united team. Together we achieve more"
+    "missionText4": "We are a family that values honesty and integrity. Across our network, we treat others in the way we would like to be treated. We empower each person to do what it takes to deliver and we collaborate and engage as one united team. Together we achieve more",
+    "readMore": "read more"
   },
   "contactBtn": "contact us",
   "branchesTitle": "Branches",
@@ -186,5 +187,12 @@
     "cashSosText15": "6. Full automation of the partner’s project activities and recommendations for its improvement",
     "cashSosText16": "7. Recommendations for marketing and other activities based on the existing experience in client management",
     "certificatesHeading": "Our patents and certificates"
+  },
+  "branch": {
+    "population": "Population",
+    "gpd": "GPD",
+    "mainIndustries": "Main industries",
+    "numberOfCities": "Number of cities",
+    "seeAll": "see all countries"
   }
 }

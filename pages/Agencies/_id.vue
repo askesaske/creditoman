@@ -3,40 +3,42 @@
     <div class="header_descr">
       <div class="country-row">
         <div class="country_menu">
-          <h1>{{ country.country }}</h1>
+          <h1 v-if="$i18n.locale === 'ru'">{{ country.rus_lang_country }}</h1>
+          <h1 v-else>{{ country.eng_lang_country }}</h1>
           <div class="country_menu__items">
             <div class="country_menu__item">
-              <p>Численность населения</p>
-              <p>{{ country.population}}</p>
+              <p>{{ $t('branch.population') }}</p>
+              <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_population}}</p>
+              <p v-else>{{ country.eng_lang_population}}</p>
             </div>
             <div class="country_menu__item">
-              <p>ВВП</p>
-              <p>{{ country.gdp}}</p>
+              <p>{{ $t('branch.gdp') }}</p>
+              <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_gdp}}</p>
+              <p v-else>{{ country.eng_lang_gdp}}</p>
             </div>
             <div class="country_menu__item">
-              <p>Основные отрасли</p>
-              <p>{{ country.main_industries}}</p>
+              <p>{{ $t('branch.mainIndustries') }}</p>
+              <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_main_industries}}</p>
+              <p v-else>{{ country.eng_lang_main_industries}}</p>
             </div>
             <div class="country_menu__item">
-              <p>Количество городов</p>
+              <p>{{ $t('branch.numberOfCities') }}</p>
               <p>{{ country.number_of_cities}}</p>
             </div>
           </div>
         </div>
-        <p>
-          {{country.text}}
-        </p>
+        <p v-if="$i18n.locale === 'ru'">{{country.rus_lang_text}}</p>
+        <p v-else>{{country.eng_lang_text}}</p>
       </div>
 <!--      <img :src="country.country_map" />-->
     </div>
     <div class="solo_body">
       <img :src="country.country_map" width="590px" height="503px"/>
-      <p>
-        {{ country.text }}
-      </p>
+      <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_text }}</p>
+      <p v-else>{{ country.eng_lang_text }}</p>
     </div>
-    <nuxt-link :to="'/Agencies'" class="see_all">
-      смотреть все страны<img src="../../assets/img/solo/go.png" />
+    <nuxt-link :to="localePath('/Agencies')" class="see_all">
+      {{ $t('branch.seeAll') }}<img src="../../assets/img/solo/go.png" />
     </nuxt-link>
   </div>
 </template>

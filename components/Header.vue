@@ -32,7 +32,13 @@
           {{ $t('header.branches')}}
           <div class="dropdown">
             <nuxt-link :to="localePath('/Agencies/' + count.id)"
-                       v-for="count in countries" :key="count.id">{{ count.country}}</nuxt-link>
+                       v-for="count in countries"
+                       :key="count.id"
+                       v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country}}</nuxt-link>
+            <nuxt-link :to="localePath('/Agencies/' + count.id)"
+                       v-for="count in countries"
+                       :key="count.id"
+                       v-if="$i18n.locale === 'en'">{{ count.eng_lang_country}}</nuxt-link>
           </div>
         </nuxt-link>
         <nuxt-link
@@ -230,7 +236,8 @@ export default {
   display: none;
   position: absolute;
   top: 35px;
-  left: -9px;
+  //left: -9px;
+  right: 0;
   width: 200px;
   //height: 609px;
   padding: 25px 0;

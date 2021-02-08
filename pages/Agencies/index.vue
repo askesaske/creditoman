@@ -2,19 +2,21 @@
   <div class="agencies" v-if="worlds">
     <representations-map></representations-map>
     <div class="country" v-for="world in worlds">
-      <h1>Страны {{ world.world }}</h1>
+      <h1 v-if="$i18n.locale === 'ru'">{{ world.rus_lang_world }}</h1>
+      <h1 v-else>{{ world.eng_lang_world }}</h1>
       <div class="custom_border"/>
       <div class="country__descr">
         <img width="590px" height="503px" :src="world.continent_img"/>
         <div class="text">
           <div class="text__single" v-for="country in world.country">
-            <nuxt-link :to="'/Agencies/' + country.id" class="text__name">{{ country.country }}</nuxt-link>
-            <p v-if="country.terminal_or_mobile.terminals !== null">{{ country.terminal_or_mobile }} терминалов</p>
-            <p v-else-if="country.terminal_or_mobile.mobileapp !== null">
-              Мобильное приложение
-            </p>
-            <p>{{ country.workers }} работников</p>
-            <p>{{ country.clients }} клиентов</p>
+            <nuxt-link :to="localePath('/Agencies/' + country.id)" class="text__name" v-if="$i18n.locale === 'ru'">{{ country.rus_lang_country }}</nuxt-link>
+            <nuxt-link :to="localePath('/Agencies/' + country.id)" class="text__name" v-else>{{ country.eng_lang_country }}</nuxt-link>
+            <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_terminal_or_mobile }} </p>
+            <p v-else>{{ country.eng_lang_terminal_or_mobile }} </p>
+            <p v-if="$i18n.locale === 'ru'">{{ country.workers }} работников</p>
+            <p v-else>{{ country.workers }} employees</p>
+            <p v-if="$i18n.locale === 'ru'">{{ country.clients }} клиентов</p>
+            <p v-else>{{ country.clients }} clients</p>
           </div>
         </div>
       </div>

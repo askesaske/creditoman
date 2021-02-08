@@ -11,11 +11,11 @@
                 {{ newsContent.created_date | moment('YYYY - MM - DD') }}
               </div>
             </div>
-            <h4 class="modal__heading">
-              {{ newsContent.title }}
-            </h4>
+            <h4 class="modal__heading" v-if="$i18n.locale === 'ru'">{{ newsContent.rus_lang_title }}</h4>
+            <h4 class="modal__heading" v-else>{{ newsContent.eng_lang_title }}</h4>
 
-            <div class="modal__text" v-html="newsContent.text"></div>
+            <div class="modal__text" v-html="newsContent.rus_lang_text" v-if="$i18n.locale === 'ru'"></div>
+            <div class="modal__text" v-html="newsContent.eng_lang_text" v-else></div>
           </div>
 
           <button class="modal__button" @click="$emit('close')"></button>
@@ -75,6 +75,10 @@ export default {
   &__img-box {
     position: relative;
     margin-bottom: 80px;
+
+    img {
+      width: 100%;
+    }
   }
 
   &__date {
