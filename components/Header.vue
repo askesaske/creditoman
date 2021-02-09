@@ -1,7 +1,7 @@
 <template>
   <div class="header_wrapper">
     <div class="header">
-      <img class="logo" src="../assets/img/main/logo.png" @click="goHome" />
+      <img class="logo" src="../assets/img/main/logo.png" @click="goHome"/>
       <div class="navigation">
         <nuxt-link
           :to="localePath('/')"
@@ -10,10 +10,10 @@
           title="главная"
           exact
         >
-          {{ $t('header.home')}}
+          {{ $t('header.home') }}
         </nuxt-link>
         <nuxt-link :to="localePath('/About')" tag="a" class="navigation__link" title="о нас">
-          {{ $t('header.about')}}
+          {{ $t('header.about') }}
         </nuxt-link>
         <nuxt-link
           :to="localePath('/Products')"
@@ -21,7 +21,7 @@
           class="navigation__link"
           title="продукты"
         >
-          {{ $t('header.products')}}
+          {{ $t('header.products') }}
         </nuxt-link>
         <nuxt-link
           :to="localePath('/Agencies')"
@@ -29,16 +29,18 @@
           class="agencies navigation__link"
           title="представительства"
         >
-          {{ $t('header.branches')}}
+          {{ $t('header.branches') }}
           <div class="dropdown">
             <nuxt-link :to="localePath('/Agencies/' + count.id)"
                        v-for="count in countries"
                        :key="count.id"
-                       v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country}}</nuxt-link>
+                       v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}
+            </nuxt-link>
             <nuxt-link :to="localePath('/Agencies/' + count.id)"
                        v-for="count in countries"
                        :key="count.id"
-                       v-if="$i18n.locale === 'en'">{{ count.eng_lang_country}}</nuxt-link>
+                       v-if="$i18n.locale === 'en'">{{ count.eng_lang_country }}
+            </nuxt-link>
           </div>
         </nuxt-link>
         <nuxt-link
@@ -47,39 +49,101 @@
           class="navigation__link"
           title="партнерство"
         >
-          {{ $t('header.partner')}}
+          {{ $t('header.partner') }}
         </nuxt-link>
-<!--        <nuxt-link-->
-<!--          to="/Team"-->
-<!--          tag="a"-->
-<!--          class="navigation__link"-->
-<!--          title="Наша команда"-->
-<!--        >-->
-<!--          Наша команда-->
-<!--        </nuxt-link>-->
+        <!--        <nuxt-link-->
+        <!--          to="/Team"-->
+        <!--          tag="a"-->
+        <!--          class="navigation__link"-->
+        <!--          title="Наша команда"-->
+        <!--        >-->
+        <!--          Наша команда-->
+        <!--        </nuxt-link>-->
       </div>
       <div class="lang_local_wrapper" v-click-outside="hide">
         <div @click="toggleLang" class="lang_local">
-          <img v-if="$i18n.locale === 'ru'" src="../assets/img/main/rus.png" />
-          <img v-else src="../assets/img/main/en.png" />
-          <img src="../assets/img/main/lang_dropdown.png" />
+          <img v-if="$i18n.locale === 'ru'" src="../assets/img/main/rus.png"/>
+          <img v-else src="../assets/img/main/en.png"/>
+          <img src="../assets/img/main/lang_dropdown.png"/>
         </div>
         <div v-if="langDrop" class="lang_local_wrapper__dropdown">
-          <img v-if="$i18n.locale === 'ru'" @click="changeLang('en')" src="../assets/img/main/en.png" />
-          <img v-else @click="changeLang('ru')" src="../assets/img/main/rus.png" />
+          <img v-if="$i18n.locale === 'ru'" @click="changeLang('en')" src="../assets/img/main/en.png"/>
+          <img v-else @click="changeLang('ru')" src="../assets/img/main/rus.png"/>
         </div>
       </div>
+
+      <div class="mobile-dropdown-toggle" @click="toggleSidebar">
+        <img src="../assets/img/main/burger-btn.png" alt="">
+      </div>
+    </div>
+    <div class="nav-dropdown" :class="sideBar ? 'nav-dropdown--show' : ''" id="navDropdown">
+      <nuxt-link
+        :to="localePath('/')"
+        tag="a"
+        class="nav-dropdown__link"
+        title="главная"
+        exact
+        @click.native="sideBar = false"
+      >
+        {{ $t('header.home') }}
+      </nuxt-link>
+      <nuxt-link :to="localePath('/About')"
+                 tag="a"
+                 class="nav-dropdown__link"
+                 title="о нас" @click.native="sideBar = false">
+        {{ $t('header.about') }}
+      </nuxt-link>
+      <nuxt-link
+        :to="localePath('/Products')"
+        tag="a"
+        class="nav-dropdown__link"
+        title="продукты"
+      >
+        {{ $t('header.products') }}
+      </nuxt-link>
+      <div
+        class="nav-dropdown__link nav-agencies"
+        :class="sideDrop ? 'nav-agencies--show' : ''"
+        @click="toggleSideDrop"
+      >
+        {{ $t('header.branches') }}
+        <img src="../assets/img/main/chevron.png" alt="">
+        <div class="nav-agencies__dropdown">
+          <div class="nav-agencies__list">
+            <nuxt-link :to="localePath('/Agencies/' + count.id)"
+                       v-for="count in countries"
+                       :key="count.id"
+                       tag="a"
+                       v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}
+            </nuxt-link>
+            <nuxt-link :to="localePath('/Agencies/' + count.id)"
+                       v-for="count in countries"
+                       :key="count.id"
+                       tag="a"
+                       v-if="$i18n.locale === 'en'">{{ count.eng_lang_country }}
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+      <nuxt-link
+        :to="localePath('/Partnership')"
+        tag="a"
+        class="nav-dropdown__link"
+        title="партнерство"
+      >
+        {{ $t('header.partner') }}
+      </nuxt-link>
     </div>
     <div class="social">
-      <div class="tweet">
-        <img src="../assets/img/main/tweet.png" />
-      </div>
-      <div class="inst">
-        <img src="../assets/img/main/inst.png" />
-      </div>
-      <div class="fb">
-        <img src="../assets/img/main/fb.png" />
-      </div>
+      <a href="https://www.linkedin.com/company/cashsoswiftly-llc/?originalSubdomain=ru" class="tweet">
+        <img src="../assets/img/main/linkedin.png"/>
+      </a>
+      <a href="https://www.instagram.com/creditomat.md/?hl=ru" class="inst">
+        <img src="../assets/img/main/inst.png"/>
+      </a>
+      <a href="#" class="fb">
+        <img src="../assets/img/main/fb.png"/>
+      </a>
     </div>
   </div>
 </template>
@@ -92,6 +156,8 @@ export default {
     langDrop: false,
     countries: [],
     langState: true,
+    sideBar: false,
+    sideDrop: false
   }),
   directives: {
     ClickOutside
@@ -103,12 +169,18 @@ export default {
     toggleLang() {
       this.langDrop = !this.langDrop;
     },
+    toggleSidebar() {
+      this.sideBar = !this.sideBar;
+    },
+    toggleSideDrop() {
+      this.sideDrop = !this.sideDrop;
+    },
     changeLang(langVal) {
-      if(langVal === 'en') {
+      if (langVal === 'en') {
         this.$i18n.locale = 'en';
         this.langState = false;
       }
-      if(langVal ==='ru') {
+      if (langVal === 'ru') {
         this.$i18n.locale = 'ru';
         this.langState = true;
       }
@@ -129,6 +201,8 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/fonts.scss";
+@import "../assets/style/respond";
+
 .header_wrapper {
   position: fixed;
   top: 0;
@@ -138,6 +212,7 @@ export default {
   z-index: 999;
   width: 100%;
 }
+
 .header {
   width: 1200px;
   max-width: 100%;
@@ -146,9 +221,22 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include respond(tab-land) {
+    width: 767px;
+    justify-content: unset;
+  }
+
+  @include respond(phone) {
+    max-width: 375px;
+    width: unset;
+    padding: 0 15px;
+  }
+
   .logo {
     cursor: pointer;
   }
+
   .navigation {
     width: 809px;
     height: 70px;
@@ -156,6 +244,7 @@ export default {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+
     &__link {
       @include normal;
       font-size: 16px;
@@ -178,7 +267,12 @@ export default {
         border-bottom: 4px solid #623f99;
       }
     }
+
+    @include respond(tab-land) {
+      display: none;
+    }
   }
+
   .lang_local_wrapper {
     position: relative;
     width: 118px;
@@ -186,6 +280,11 @@ export default {
     align-items: center;
     justify-content: flex-end;
     z-index: 999;
+    @include respond(tab-land) {
+      width: unset;
+      margin-left: auto;
+    }
+
     &__dropdown {
       position: absolute;
       right: 0;
@@ -200,6 +299,7 @@ export default {
       display: flex;
       align-items: center;
     }
+
     .lang_local {
       display: flex;
       align-items: center;
@@ -209,14 +309,111 @@ export default {
       border: 1px solid #623f99;
       border-radius: 4px;
       cursor: pointer;
+
       img:last-of-type {
         margin-left: 6px;
       }
     }
   }
+
+  .mobile-dropdown-toggle {
+    display: none;
+
+    @include respond(tab-land) {
+      display: flex;
+      width: 60px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #623f99;
+      border-radius: 4px;
+      margin-left: 10px;
+    }
+  }
 }
+
+.nav-dropdown {
+  position: fixed;
+  right: -200%;
+  top: 0;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #FFFFFF;
+  z-index: 10000;
+  padding: 60px 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  transition: all .5s;
+
+  &--show {
+    right: 0;
+  }
+
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+    @include normal;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 25px;
+    color: #131313;
+
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.nav-agencies {
+  $e: &;
+
+  transition: all .3s;
+
+  &--show {
+    #{$e}__dropdown {
+      display: block;
+    }
+    img {
+      transform: rotate(180deg);
+    }
+  }
+
+  img {
+    margin-left: 8px;
+    margin-bottom: 5px;
+  }
+
+  &__dropdown {
+    display: none;
+    margin-left: 40px;
+    margin-top: 20px;
+    border-left: 1px solid rgba(#623f99, .5);
+  }
+
+  &__list {
+    padding-left: 20px;
+
+    a {
+      display: block;
+      font-size: 16px;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #623f99;
+      text-decoration: none;
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
 .agencies {
   position: relative;
+
   &:hover {
     .dropdown {
       display: unset;
@@ -224,6 +421,7 @@ export default {
     }
   }
 }
+
 @keyframes dropdown_an {
   from {
     opacity: 0;
@@ -232,6 +430,7 @@ export default {
     opacity: 1;
   }
 }
+
 .dropdown {
   display: none;
   position: absolute;
@@ -246,6 +445,7 @@ export default {
   background: #ffffff;
   border: 1px solid #131313;
   z-index: 999;
+
   &::before {
     content: "";
     position: absolute;
@@ -259,6 +459,7 @@ export default {
     top: -9.7px;
     transform: rotate(45deg);
   }
+
   a {
     //@include medium;
     font-size: 16px;
@@ -269,20 +470,24 @@ export default {
     display: block;
     text-decoration: none;
     margin-bottom: 4px;
+
     &:last-of-type {
       margin-bottom: 0;
     }
+
     &:hover {
       background: #d0c5e0;
     }
   }
 }
+
 .social {
   position: fixed;
   top: 209px;
   right: 0;
   height: 174px;
   z-index: 9999;
+
   .tweet,
   .inst,
   .fb {
@@ -292,22 +497,32 @@ export default {
     width: 58px;
     height: 58px;
     cursor: pointer;
+
     img {
       transition: 0.4s;
     }
+
     &:hover {
       img {
         transform: scale(1.1);
       }
     }
+
+    @include respond(phone) {
+      width: 50px;
+      height: 50px;
+    }
   }
+
   .tweet {
     background: #41abe1;
     border-radius: 8px 0px 0px 0px;
   }
+
   .inst {
     background: #8f69cc;
   }
+
   .fb {
     background: #3d5d9a;
     border-radius: 0px 0px 0px 8px;

@@ -103,6 +103,7 @@ export default {
     font-size: 16px;
     line-height: 20px;
     color: #131313;
+    overflow-wrap: break-word;
   }
 
   &__button {

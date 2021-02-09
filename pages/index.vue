@@ -155,22 +155,31 @@
       </div>
     </div>
 
-    <representations-map style="margin-top: 120px"></representations-map>
+    <representations-map class="branches"></representations-map>
 
     <div class="articles">
       <h1>{{ $t('newsTitle') }}</h1>
       <div class="articles_bord"/>
-      <div class="articles__grid">
-        <div class="single_item" v-for="n in news">
-          <img :src="n.img"/>
-          <p class="single_item__date">{{ n.created_date | moment("YYYY - MM - DD") }}</p>
-          <h2 class="single_item__title" v-if="$i18n.locale === 'ru'">{{ n.rus_lang_title }}</h2>
-          <h2 class="single_item__title" v-else>{{ n.eng_lang_title }}</h2>
-          <p class="single_item__descr" v-if="$i18n.locale ==='ru'">{{ n.rus_lang_short_text }}</p>
-          <p class="single_item__descr" v-else>{{ n.eng_lang_short_text }}</p>
-          <p class="single_item__more" @click="openModal(n)">
-            {{ $t('home.readMore') }}
-          </p>
+      <div class="articles__container">
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="single_item swiper-slide" v-for="n in news">
+              <img :src="n.img"/>
+              <p class="single_item__date">{{ n.created_date | moment("YYYY - MM - DD") }}</p>
+              <h2 class="single_item__title" v-if="$i18n.locale === 'ru'">{{ n.rus_lang_title }}</h2>
+              <h2 class="single_item__title" v-else>{{ n.eng_lang_title }}</h2>
+              <p class="single_item__descr" v-if="$i18n.locale ==='ru'">{{ n.rus_lang_short_text }}</p>
+              <p class="single_item__descr" v-else>{{ n.eng_lang_short_text }}</p>
+              <p class="single_item__more" @click="openModal(n)">
+                {{ $t('home.readMore') }}
+              </p>
+            </div>
+          </div>
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
     </div>
@@ -183,11 +192,24 @@
 <script>
 import NewsModal from "@/components/NewsModal";
 import RepresentationsMap from "@/components/RepresentationsMap";
+import Swiper, {Navigation} from 'swiper';
+
+Swiper.use([Navigation]);
+
+const swiper = new Swiper('.swiper-container', {
+  // slidesPerView: 3,
+  // spaceBetween: 20,
+  // navigation: {
+  //   nextEl: '.swiper-button-next',
+  //   prevEl: '.swiper-button-prev',
+  // },
+});
+
 
 export default {
   components: {
     NewsModal,
-    RepresentationsMap
+    RepresentationsMap,
   },
   data() {
     return {
@@ -211,19 +233,22 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/fonts.scss";
+@import "../assets/style/respond";
 
 .index {
   padding-top: 70px;
+  overflow: hidden;
 }
 
 // welcome
 .welcome {
   position: relative;
   background-image: url("../assets/img/main/bg.png");
-  background-size: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
   padding-top: 173px;
   height: 610px;
-  width: 100%;
+  //width: 100%;
 
   &__content {
     width: 1200px;
@@ -270,6 +295,27 @@ export default {
       outline: none;
       cursor: pointer;
     }
+
+    @include respond(tab-land) {
+      width: 767px;
+    }
+
+    @include respond(phone) {
+      max-width: 375px;
+      width: unset;
+      padding-left: 15px;
+      padding-right: 15px;
+
+      h1 {
+        font-size: 32px;
+        line-height: 40px;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 23px;
+      }
+    }
   }
 }
 
@@ -281,10 +327,45 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 140px;
+    padding: 20px 0;
+    flex-wrap: wrap;
     width: 1200px;
     max-width: 100%;
     margin: 0 auto;
+
+    @include respond(tab-land) {
+      width: 767px;
+    }
+
+    @include respond(phone) {
+      max-width: 375px;
+      padding-left: 15px;
+      padding-right: 15px;
+      justify-content: unset;
+      gap: 25px;
+
+      img {
+        &:nth-child(1) {
+          width: 133px;
+          height: 27px;
+          margin-right: 50px;
+        }
+        &:nth-child(2) {
+          width: 75px;
+          height: 44px;
+        }
+        &:nth-child(3) {
+          width: 41px;
+          height: 49px;
+          margin-right: 75px;
+          margin-left: 30px;
+        }
+        &:nth-child(4) {
+          width: 112px;
+          height: 45px;
+        }
+      }
+    }
   }
 }
 
@@ -293,6 +374,7 @@ export default {
   position: relative;
   height: 534px;
   margin: 120px 0;
+
   //overflow: hidden;
   .fixed__bg {
     position: absolute;
@@ -302,6 +384,11 @@ export default {
     width: calc(100vw - 455px);
     background-color: rgba(246, 239, 255, 0.8);
     z-index: -1;
+
+    @include respond(tab-land) {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__content {
@@ -312,6 +399,13 @@ export default {
     margin: 0 auto;
     padding-top: 40px;
     padding-left: 39px;
+
+    @include respond(tab-land) {
+      width: 767px;
+      padding: 93px 0 60px;
+      text-align: center;
+      position: unset;
+    }
 
     h1 {
       @include bold;
@@ -333,6 +427,7 @@ export default {
       color: #131313;
       margin-bottom: 35px;
       max-width: 583px;
+      text-align: left;
 
       &::after {
         content: url("../assets/img/main/checkbox.png");
@@ -344,6 +439,14 @@ export default {
       &:last-of-type {
         margin-bottom: 0;
       }
+
+      @include respond(tab-land) {
+        padding-left: 35px;
+
+        &:after {
+          left: 0;
+        }
+      }
     }
 
     &::before {
@@ -351,6 +454,39 @@ export default {
       position: absolute;
       right: -100px;
       top: 120px;
+
+      @include respond(tab-land) {
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%) scale(0.7);
+        top: -320px;
+      }
+    }
+  }
+
+  @include respond(tab-land) {
+    height: unset;
+    margin-top: 350px;
+  }
+
+  @include respond(phone) {
+    margin-top: 250px;
+    margin-bottom: 90px;
+
+    &__content {
+      width: unset;
+      max-width: 375px;
+      padding-left: 15px;
+      padding-right: 15px;
+
+      &::before {
+        transform: translateX(-50%) scale(0.5);
+      }
+
+      h1 {
+        font-size: 26px;
+        line-height: 32px;
+      }
     }
   }
 }
@@ -382,6 +518,14 @@ export default {
     max-width: 100%;
     margin: 0 auto;
 
+    @include respond(tab-land) {
+      width: 767px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     //.grid_first {
     //  background-image: url("../assets/img/main/pr1.png");
     //}
@@ -403,6 +547,11 @@ export default {
       display: flex;
       align-items: center;
       padding: 30px 30px 30px 40px;
+
+      @include respond(tab-land) {
+        width: 373.5px;
+        height: 371px;
+      }
 
       img {
         margin-left: 30px;
@@ -438,11 +587,23 @@ export default {
       }
     }
   }
+
+  @include respond(phone) {
+    h1 {
+      font-size: 26px;
+      line-height: 32px;
+    }
+    .cus_bord {
+      margin-bottom: 45px;
+    }
+  }
 }
 
 // features
 .feature {
   background-image: url("../assets/img/main/feature-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 120px 0 88px;
 
   &__text {
@@ -501,11 +662,74 @@ export default {
       left: -32px;
     }
   }
+
+  @include respond(tab-land) {
+    padding-bottom: 0;
+
+    &__text {
+      max-width: 767px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__title {
+      max-width: 767px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 240px;
+    }
+
+    &__items {
+      width: unset;
+      background-color: #E2E787;
+      margin-left: unset;
+
+      &:after {
+        width: 472px;
+        height: 352px;
+        top: -260px;
+        right: 50%;
+        transform: translateX(50%) scale(0.7);
+      }
+    }
+  }
+
+  @include respond(phone) {
+    &__text {
+      max-width: 375px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    &__title {
+      max-width: 375px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    &__items {
+      padding-left: 40px;
+      padding-right: 15px;
+    }
+
+    &__item {
+      &:before {
+        background-image: url("../assets/img/main/purple-checkbox-sm.png");
+        width: 14px;
+        height: 14px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        top: 3px;
+        left: -20px;
+      }
+    }
+  }
 }
 
 //main-features
 .main-features {
-  padding: 120px;
+  padding: 120px 0;
   background-color: #D0C5E0;
 
   &__title {
@@ -520,6 +744,7 @@ export default {
 
   &__row {
     display: flex;
+    flex-wrap: wrap;
     width: 1200px;
     margin: 0 auto;
     //align-items: flex-start;
@@ -530,7 +755,7 @@ export default {
     background: #FFFFFF;
     box-shadow: 0 4px 20px rgba(146, 115, 194, 0.5);
     border-radius: 8px;
-    width: 387px;
+    width: 386px;
 
     &:not(:last-child) {
       margin-right: 20px;
@@ -555,6 +780,35 @@ export default {
       font-size: 16px;
       line-height: 20px;
       color: #131313;
+    }
+  }
+
+  @include respond(tab-land) {
+    &__row {
+      width: 767px;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    &__box {
+      width: 372px;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    padding: 60px 0;
+
+    &__title {
+      padding: 0 15px;
+      font-size: 18px;
+    }
+
+    &__row {
+      max-width: 375px;
     }
   }
 }
@@ -594,6 +848,30 @@ export default {
     span {
       color: #d5dd25;
       font-weight: 700;
+    }
+
+    @include respond(tab-land) {
+      width: 767px;
+    }
+  }
+
+  @include respond(phone) {
+    background-image: linear-gradient(0deg, rgba(63, 46, 89, 0.9), rgba(63, 46, 89, 0.9));
+
+    h1 {
+      font-size: 26px;
+      line-height: 32px;
+    }
+
+    &__bord {
+      width: 68px;
+    }
+
+    &__subtitle {
+      width: 375px;
+      font-size: 14px;
+      line-height: 17.5px;
+      margin-bottom: 40px;
     }
   }
 }
@@ -648,12 +926,60 @@ export default {
       max-width: 265px;
       margin-left: 35px;
     }
+
+    @include respond(tab-land) {
+      flex-direction: column;
+      padding: 25px 15px;
+      justify-content: center;
+
+      .img_title {
+        width: unset;
+        height: 174px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin: 0;
+        max-width: unset;
+      }
+    }
+  }
+
+  @include respond(tab-land) {
+    grid-template-columns: repeat(2, 373px);
+    grid-gap: 20px;
+    width: 767px;
+  }
+
+  @include respond(phone) {
+    grid-template-columns: repeat(1, 343px);
+    max-width: 375px;
+    justify-content: center;
+  }
+}
+
+.branches {
+  margin-top: 120px;
+
+  @include respond(phone) {
+    margin-top: 90px;
   }
 }
 
 // articles
 .articles {
   padding: 120px 0;
+
+  display: none;
+
+  &__container {
+    width: 1200px;
+    margin: 0 auto;
+
+    @include respond(tab-land) {
+      width: 767px;
+    }
+  }
 
   h1 {
     //@include medium;
@@ -669,18 +995,14 @@ export default {
     width: 160px;
     border-bottom: 2px solid #623f99;
   }
-
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 387px);
-    width: 1200px;
-    max-width: 100%;
-    justify-content: space-between;
-    margin: 0 auto;
-  }
 }
 
 .single_item {
+  img {
+    width: 387px;
+    height: 274px;
+  }
+
   &__date {
     @include normal;
     font-size: 16px;
@@ -727,6 +1049,16 @@ export default {
 </style>
 
 <style lang="scss">
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  width: auto;
+}
+
 .about .about__content p span {
   font-weight: 700;
   color: #623F99;

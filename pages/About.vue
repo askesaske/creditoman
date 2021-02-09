@@ -4,14 +4,16 @@
     <div class="custom_border"/>
     <div class="biography">
       <div class="biography__author">
-        <img
-          class="biography__author__face"
-          src="../assets/img/about/face.png"
-        />
-        <p class="biography__author__name">
-          <span>{{ $t('about.ceoName') }}</span> <br/>
-          {{ $t('about.ceoPosition') }}
-        </p>
+        <div class="biography__box">
+          <img
+            class="biography__author__face"
+            src="../assets/img/about/face.png"
+          />
+          <p class="biography__author__name">
+            <span>{{ $t('about.ceoName') }}</span> <br/>
+            {{ $t('about.ceoPosition') }}
+          </p>
+        </div>
         <div class="description">
           <p>
             {{ $t('about.biography1') }} <br/>
@@ -193,6 +195,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/fonts.scss";
+@import "../assets/style/respond";
+
+img {
+  max-width: 100%;
+  width: auto;
+}
 
 .About {
   padding-top: 130px;
@@ -205,6 +213,14 @@ export default {
     text-transform: uppercase;
     text-align: center;
     color: #623f99;
+  }
+
+  @include respond(phone) {
+
+    &__title {
+      font-size: 26px;
+      line-height: 32px;
+    }
   }
 }
 
@@ -283,6 +299,52 @@ export default {
         transform: rotate(180deg);
         z-index: 999;
       }
+
+      @include respond(tab-land) {
+        max-width: 767px;
+        padding-right: 20px;
+      }
+    }
+  }
+
+  @include respond(tab-land) {
+    height: 1300px;
+  }
+
+  @include respond(phone) {
+    padding-top: 130px;
+    margin-bottom: 0;
+
+    &__author {
+      width: 100%;
+    }
+
+    .description {
+      position: unset;
+      width: 100%;
+      padding: 206px 16px 60px;
+      text-align: center;
+
+      p {
+        font-size: 14px;
+        line-height: 17.6px;
+        max-width: 375px;
+        margin: 0 auto;
+
+        &:after, &:before {
+          display: none;
+        }
+      }
+    }
+
+    &__box {
+      position: absolute;
+      top: -120px;
+
+      img {
+        width: 178px;
+        height: 240px;
+      }
     }
   }
 }
@@ -290,8 +352,10 @@ export default {
 //  priorities
 .priorities {
   background-image: url("../assets/img/about/priority-bg.png");
-  padding-top: 120px;
-  height: 748px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 120px 0;
+  //height: 748px;
 
   h1 {
     //@include medium;
@@ -348,6 +412,37 @@ export default {
         color: #131313;
       }
     }
+
+    @include respond(tab-land) {
+      width: 768px;
+      max-width: unset;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+    }
+  }
+
+  @include respond(tab-land) {
+    //height: 1150px;
+  }
+
+  @include respond(phone) {
+    padding: 120px 0 60px;
+    h1 {
+      font-size: 26px;
+      line-height: 32px;
+    }
+    .bord_title {
+      width: 68px;
+      margin: 5px auto 32px;
+    }
+
+    .grid_items {
+      width: unset;
+      max-width: 375px;
+      padding-left: 15px;
+      padding-right: 15px;
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
 
@@ -385,13 +480,34 @@ export default {
       margin-bottom: 20px;
     }
   }
+
+  @include respond(phone) {
+    h1 {
+      font-size: 26px;
+    }
+
+    .custom_border {
+      margin-bottom: 30px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+      max-width: 375px;
+      padding: 0 15px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 
 .counter {
   background-image: url("../assets/img/about/bg.png");
-  background-size: 100% 100%;
-  height: 447px;
+  background-size: cover;
+  background-repeat: no-repeat;
   padding-top: 90px;
+  padding-bottom: 60px;
 
   h1 {
     //@include medium;
@@ -439,6 +555,32 @@ export default {
       }
     }
   }
+
+  @include respond(tab-land) {
+    &__grid {
+      max-width: unset;
+      width: 767px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+    }
+  }
+
+  @include respond(phone) {
+    padding-top: 60px;
+
+    h1 {
+      font-size: 26px;
+      line-height: 32px;
+      margin-bottom: 30px;
+    }
+
+    &__grid {
+      max-width: 375px;
+      padding: 0 15px;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 20px;
+    }
+  }
 }
 
 .video_cont {
@@ -480,9 +622,11 @@ export default {
 
   &__box {
     position: relative;
+
     video {
       position: relative;
       z-index: 1;
+
       &:focus {
         outline: none;
       }
@@ -501,6 +645,17 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 2;
+  }
+
+  @include respond(phone) {
+    &__wrapper {
+      padding: 30px 18px;
+    }
+
+    &__box video {
+      max-width: 375px;
+      width: auto;
+    }
   }
 }
 </style>

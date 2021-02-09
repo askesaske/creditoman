@@ -71,6 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/fonts.scss";
+@import "../assets/style/respond";
 //representations
 .representations {
   text-align: center;
@@ -119,6 +120,12 @@ export default {
       &.active {
         filter: drop-shadow(0px 0px 10px rgba(98, 63, 153, 0.5));
       }
+    }
+  }
+
+  @include respond(phone) {
+    &__title {
+      font-size: 26px;
     }
   }
 }
