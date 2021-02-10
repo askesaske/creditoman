@@ -653,7 +653,7 @@ img {
     }
 
     &__box video {
-      max-width: 375px;
+      max-width: 307px;
       width: auto;
     }
   }

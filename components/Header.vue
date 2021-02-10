@@ -90,7 +90,9 @@
       <nuxt-link :to="localePath('/About')"
                  tag="a"
                  class="nav-dropdown__link"
-                 title="о нас" @click.native="sideBar = false">
+                 title="о нас"
+                 @click.native="sideBar = false"
+      >
         {{ $t('header.about') }}
       </nuxt-link>
       <nuxt-link
@@ -98,6 +100,7 @@
         tag="a"
         class="nav-dropdown__link"
         title="продукты"
+        @click.native="sideBar = false"
       >
         {{ $t('header.products') }}
       </nuxt-link>
@@ -114,12 +117,14 @@
                        v-for="count in countries"
                        :key="count.id"
                        tag="a"
+                       @click.native="sideBar = false"
                        v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}
             </nuxt-link>
             <nuxt-link :to="localePath('/Agencies/' + count.id)"
                        v-for="count in countries"
                        :key="count.id"
                        tag="a"
+                       @click.native="sideBar = false"
                        v-if="$i18n.locale === 'en'">{{ count.eng_lang_country }}
             </nuxt-link>
           </div>
@@ -130,6 +135,7 @@
         tag="a"
         class="nav-dropdown__link"
         title="партнерство"
+        @click.native="sideBar = false"
       >
         {{ $t('header.partner') }}
       </nuxt-link>
@@ -140,9 +146,6 @@
       </a>
       <a href="https://www.instagram.com/creditomat.md/?hl=ru" class="inst">
         <img src="../assets/img/main/inst.png"/>
-      </a>
-      <a href="#" class="fb">
-        <img src="../assets/img/main/fb.png"/>
       </a>
     </div>
   </div>
@@ -521,10 +524,6 @@ export default {
 
   .inst {
     background: #8f69cc;
-  }
-
-  .fb {
-    background: #3d5d9a;
     border-radius: 0px 0px 0px 8px;
   }
 }

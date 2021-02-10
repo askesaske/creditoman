@@ -22,9 +22,6 @@
             <a href="https://www.instagram.com/creditomat.md/?hl=ru">
               <img src="../assets/img/main/inst.png"/>
             </a>
-            <a href="#">
-              <img src="../assets/img/main/fb.png"/>
-            </a>
           </div>
         </div>
       </form>

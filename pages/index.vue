@@ -106,7 +106,7 @@
         <div class="main-features__box">
           <img src="../assets/img/main/online-learning.png" alt="">
           <h5>
-            {{ $t('home.featureItemTitle2') }}
+            {{ $t('home.featureItemTitle3') }}
           </h5>
           <p>
             {{ $t('home.featureItemText3') }}
@@ -553,6 +553,10 @@ export default {
         height: 371px;
       }
 
+      @include respond(phone) {
+        width: 343px;
+      }
+
       img {
         margin-left: 30px;
       }
@@ -809,6 +813,10 @@ export default {
 
     &__row {
       max-width: 375px;
+    }
+
+    &__box {
+      width: 343px;
     }
   }
 }

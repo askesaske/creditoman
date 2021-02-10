@@ -40,7 +40,7 @@
       <div class="who_people">
         <div class="empty_for_verstka"/>
         <div class="who_people__box">
-          <div class="normal_txt">
+          <div class="normal_txt normal_txt--reverse">
             <img src="../assets/img/partnership/global.png"/>
             <p style="text-align: right" v-html="$t('partnership.coopItemText2')"></p>
           </div>
@@ -76,8 +76,41 @@
     </div>
     <div class="howto">
       <h2>{{ $t('partnership.modelHeading') }}</h2>
-      <img src="../assets/img/partnership/howto.png" v-if="$i18n.locale === 'ru'"/>
-      <img src="../assets/img/partnership/howto-en.png" v-else/>
+      <img class="howto__step-img" src="../assets/img/partnership/howto.png" v-if="$i18n.locale === 'ru'"/>
+      <img class="howto__step-img" src="../assets/img/partnership/howto-en.png" v-else/>
+
+      <div class="welcome_img">
+        <div class="welcome_img__mobile-circles">
+          <div class="welcome_img__mobile-step">
+            <img src="../assets/img/partnership/bModel1.png" alt="">
+            <p>{{ $t('partnership.bModel1')}}</p>
+          </div>
+          <div class="welcome_img__mobile-step">
+            <img src="../assets/img/partnership/bModel2.png" alt="">
+            <p>{{ $t('partnership.bModel2')}}</p>
+          </div>
+          <div class="welcome_img__mobile-step">
+            <img src="../assets/img/partnership/bModel3.png" alt="">
+            <p>{{ $t('partnership.bModel3')}}</p>
+          </div>
+          <div class="welcome_img__mobile-step">
+            <img src="../assets/img/partnership/bModel4.png" alt="">
+            <p>{{ $t('partnership.bModel4')}}</p>
+          </div>
+          <div class="welcome_img__mobile-step">
+            <img src="../assets/img/partnership/bModel5.png" alt="">
+            <p>{{ $t('partnership.bModel5')}}</p>
+          </div>
+          <div class="welcome_img__mobile-step">
+            <img src="../assets/img/partnership/bModel6.png" alt="">
+            <p>{{ $t('partnership.bModel6')}}</p>
+          </div>
+          <div class="welcome_img__mobile-step">
+            <img src="../assets/img/partnership/bModel7.png" alt="">
+            <p>{{ $t('partnership.bModel7')}}</p>
+          </div>
+        </div>
+      </div>
 
       <h1 class="title">{{ $t('partnership.benefitHeading') }}</h1>
       <div class="custom_border"/>
@@ -261,6 +294,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/fonts.scss";
+@import "../assets/style/respond";
 
 .partners {
   position: relative;
@@ -297,11 +331,23 @@ export default {
       margin-left: 13px;
     }
   }
+
+  @include respond(phone) {
+
+    &__btn {
+      right: 16px;
+      width: 254px;
+      font-size: 14px;
+      line-height: 17.6px;
+    }
+  }
 }
 
 .partner-welcome {
   padding: 120px 0;
   background-image: url("../assets/img/partnership/partner-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &__inner {
     width: 1200px;
@@ -319,11 +365,37 @@ export default {
       }
     }
   }
+
+  @include respond(tab-land) {
+    padding: 120px 30px;
+
+    &__inner {
+      width: 738px;
+    }
+  }
+
+  @include respond(phone) {
+    padding: 90px 0;
+    background-position: center;
+
+    &__inner {
+      width: 343px;
+
+      p {
+        font-size: 18px;
+        line-height: 22.7px;
+      }
+    }
+  }
 }
 
 .terms {
   padding: 120px 0;
   background-color: #F8F2FF;
+
+  @include respond(phone) {
+    padding: 40px 0 90px;
+  }
 }
 
 .title {
@@ -333,6 +405,17 @@ export default {
   text-align: center;
   text-transform: uppercase;
   color: #623f99;
+
+  @include respond(phone) {
+    font-size: 26px;
+    line-height: 32.7px;
+  }
+}
+
+.title + .custom_border {
+  @include respond(phone) {
+    margin-bottom: 30px;
+  }
 }
 
 .custom_border {
@@ -350,6 +433,12 @@ export default {
   width: 1200px;
   max-width: 100%;
   margin: 0 auto 36px;
+
+  @include respond(phone) {
+    font-size: 14px;
+    line-height: 17.6px;
+    margin-bottom: 30px;
+  }
 }
 
 .who_people {
@@ -418,6 +507,55 @@ export default {
       }
     }
   }
+
+  @include respond(tab-land) {
+    justify-content: center;
+    &__box {
+      display: flex;
+      width: unset;
+      max-width: 375px;
+      height: 235px;
+
+      .vertical_txt {
+        width: 51px;
+
+        p {
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+
+      .normal_txt {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        padding: 0 20px;
+
+        &--reverse {
+          flex-direction: column;
+          align-items: flex-end;
+        }
+
+        img {
+          transform: scale(.9);
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 14px;
+          line-height: 17.6px;
+        }
+      }
+    }
+  }
+
+  @include respond(phone) {
+
+    &__box {
+      width: unset;
+      max-width: 343px;
+    }
+  }
 }
 
 .statistics {
@@ -448,7 +586,31 @@ export default {
       }
     }
   }
+
+  @include respond(tab-land) {
+    height: unset;
+    padding: 30px 15px;
+
+    &__content {
+      flex-direction: column;
+      justify-content: center;
+
+      &__txt {
+        margin: 40px 0;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    &__content {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
 }
+
+
 
 .howto {
   padding-top: 80px;
@@ -469,9 +631,93 @@ export default {
     margin-bottom: 40px;
   }
 
-  img {
+  &__step-img {
     margin-top: -30px;
     margin-bottom: 100px;
+  }
+
+  @include respond(tab-land) {
+    h2 {
+      text-align: center;
+    }
+
+    &__step-img {
+      display: none;
+    }
+  }
+
+  @include respond(phone) {
+    padding-bottom: 90px;
+
+    h2 {
+      font-size: 18px;
+      line-height: 22.6px;
+    }
+  }
+}
+
+.welcome_img {
+  display: none;
+  max-width: 100%;
+  margin: 0 auto;
+
+  &__mobile-circles {
+    display: none;
+  }
+
+  &__mobile-step {
+    p {
+      @include normal;
+      margin-top: 15px;
+    }
+  }
+
+  @include respond(tab-land) {
+    display: block;
+    width: 767px;
+    margin-bottom: 60px;
+
+    &__mobile-circles {
+      text-align: center;
+      margin: 0 auto;
+      display: grid;
+      align-items: start;
+      justify-content: space-between;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 20px;
+      grid-row-gap: 40px;
+    }
+
+    &__mobile-step {
+      p {
+        font-size: 16px;
+      }
+
+      &:last-child {
+        grid-column: 2 / 3;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    width: unset;
+    max-width: 375px;
+
+    &__mobile-circles {
+      display: block;
+    }
+
+    &__mobile-step {
+
+      &:not(:last-child) {
+        margin-bottom: 60px;
+      }
+
+      p {
+        font-size: 14px;
+        padding: 0 45px;
+      }
+    }
   }
 }
 
@@ -530,6 +776,45 @@ export default {
       }
     }
   }
+
+  @include respond(tab-land) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 767px;
+    gap: 20px;
+    justify-content: center;
+
+    &__single {
+      width: 373px;
+
+      .model_title {
+        border-radius: 20px 20px 0 0;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    .model_descr {
+      height: unset;
+
+      p {
+        @include normal;
+        font-size: 14px;
+        line-height: 17.6px;
+        margin-bottom: 12px;
+      }
+    }
+    &__single {
+      width: 343px;
+      .model_title {
+        h2 {
+          font-size: 18px;
+          line-height: 22.63px;
+        }
+      }
+    }
+  }
 }
 
 .first_model_title {
@@ -567,6 +852,18 @@ export default {
     z-index: 10 !important;
     width: 345px;
   }
+
+  @include respond(phone) {
+    height: unset;
+    padding-bottom: 60px;
+    margin-bottom: 90px;
+
+    p {
+      font-size: 14px;
+      line-height: 17.6px;
+      width: 343px;
+    }
+  }
 }
 
 .costs_txt {
@@ -577,6 +874,13 @@ export default {
   text-transform: uppercase;
   color: #131313;
   margin-bottom: 60px;
+
+  @include respond(phone) {
+    width: 343px;
+    font-size: 14px;
+    line-height: 16.4px;
+    margin-bottom: 30px;
+  }
 }
 
 .cost_grid {
@@ -606,6 +910,33 @@ export default {
       text-transform: uppercase;
       color: #131313;
       margin-top: 30px;
+    }
+  }
+
+  @include respond(tab-land) {
+    width: 767px;
+
+    &__single {
+      width: 373px;
+    }
+  }
+
+  @include respond(phone) {
+    width: unset;
+    max-width: 375px;
+
+    &__single {
+      width: 343px;
+      height: unset;
+      text-align: center;
+      padding: 30px 0;
+
+      p {
+        @include normal;
+        font-size: 14px;
+        line-height: 17.6px;
+        margin-top: 20px;
+      }
     }
   }
 }
@@ -660,6 +991,55 @@ export default {
       }
     }
   }
+
+  @include respond(tab-land) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    width: 767px;
+
+    &__single {
+      &__content {
+        height: unset;
+        border-radius: 0 0 8px 8px;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    width: unset;
+    max-width: 343px;
+    padding-bottom: 90px;
+
+    &__single {
+      &__header {
+        height: unset;
+        padding: 20px 0;
+
+        h2 {
+          font-size: 18px;
+          line-height: 22.6px;
+        }
+      }
+
+      &__content {
+        padding: 30px 20px;
+
+        p {
+          font-size: 14px;
+          line-height: 17.6px;
+        }
+
+        h2 {
+          font-size: 14px;
+          line-height: 17.6px;
+
+          &:last-of-type {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
 }
 
 .fir_header {
@@ -669,6 +1049,10 @@ export default {
 
   h2 {
     color: #623f99;
+  }
+
+  @include respond(tab-land) {
+    border-radius: 20px 20px 0 0;
   }
 }
 
@@ -680,6 +1064,10 @@ export default {
   h2 {
     color: #d5dd25;
   }
+
+  @include respond(tab-land) {
+    border-radius: 20px 20px 0 0;
+  }
 }
 
 .patents {
@@ -690,6 +1078,15 @@ export default {
 
   img {
     margin: 0 20px;
+  }
+
+  @include respond(phone) {
+    flex-wrap: wrap;
+    gap: 30px;
+
+    img {
+      margin: 0;
+    }
   }
 }
 </style>

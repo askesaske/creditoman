@@ -44,6 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/style/respond";
 @import "../../assets/style/fonts.scss";
 
 .agencies {
@@ -108,6 +109,55 @@ export default {
       margin-right: 60px;
     }
   }
+
+  @include respond(tab-land) {
+    &:nth-child(odd) {
+      #{$e}__descr {
+        flex-direction: column;
+        img {
+          margin-left: 0;
+        }
+        .text__single:first-child {
+          grid-column: 1 / 2;
+          grid-row: 1 / 2;
+        }
+      }
+    }
+
+    &__descr {
+      flex-direction: column;
+      align-items: center;
+      width: 767px;
+      margin: 0 auto;
+
+      img {
+        margin-right: 0;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    h1 {
+      font-size: 26px;
+      line-height: 32.7px;
+    }
+
+    h1 + .custom_border {
+      width: 70px;
+      margin-bottom: 30px;
+    }
+
+    &__descr {
+      width: unset;
+      max-width: 375px;
+
+      img {
+        width: 343px;
+        height: 301px;
+      }
+    }
+  }
 }
 
 .text {
@@ -140,6 +190,36 @@ export default {
 
       &:last-of-type {
         margin-bottom: 0;
+      }
+    }
+  }
+
+  @include respond(tab-land) {
+    justify-content: space-around;
+  }
+
+  @include respond(phone) {
+    grid-gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 15px;
+    justify-content: unset;
+
+    &__name {
+      font-size: 14px;
+      line-height: 17.6px;
+    }
+
+    &__single {
+      text-align: center;
+
+      p {
+        font-size: 14px;
+        line-height: 17.6px;
+        margin-bottom: 6px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
   }
