@@ -433,12 +433,19 @@ export default {};
       width: 767px;
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
 
       &__single {
         width: 363px;
         flex-shrink: 0;
+
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+
+        &:first-child {
+          margin-right: 20px;
+        }
       }
     }
   }
@@ -458,6 +465,10 @@ export default {};
 
       &__single {
         width: 340px;
+
+        &:first-child {
+          margin-right: 0;
+        }
       }
     }
   }

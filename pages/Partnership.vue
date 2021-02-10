@@ -733,6 +733,7 @@ export default {
   &__single {
     background: transparent;
 
+
     .model_title {
       display: flex;
       justify-content: center;
@@ -781,12 +782,15 @@ export default {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    width: 767px;
-    gap: 20px;
+    width: 700px;
     justify-content: center;
 
     &__single {
       width: 373px;
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
 
       .model_title {
         border-radius: 20px 20px 0 0;
@@ -795,6 +799,8 @@ export default {
   }
 
   @include respond(phone) {
+    width: unset;
+    max-width: 400px;
     .model_descr {
       height: unset;
 
@@ -879,7 +885,7 @@ export default {
     width: 343px;
     font-size: 14px;
     line-height: 16.4px;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
   }
 }
 
@@ -887,7 +893,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 19px;
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
@@ -901,6 +906,15 @@ export default {
     border-radius: 8px;
     text-align: center;
     padding-top: 60px;
+
+    &:not(last-child) {
+      margin-right: 18px;
+      margin-bottom: 20px;
+    }
+
+    &:nth-child(3) {
+      margin-right: 0;
+    }
 
     p {
       @include normal;
@@ -918,6 +932,19 @@ export default {
 
     &__single {
       width: 373px;
+
+      &:not(last-child) {
+        margin-right: 18px;
+        margin-bottom: 20px;
+      }
+
+      &:nth-child(2), &:nth-child(4){
+        margin-right: 0;
+      }
+
+      &:nth-child(3) {
+        margin-right: 18px;
+      }
     }
   }
 
@@ -930,6 +957,8 @@ export default {
       height: unset;
       text-align: center;
       padding: 30px 0;
+
+      margin-right: 0 !important;
 
       p {
         @include normal;
@@ -1082,10 +1111,14 @@ export default {
 
   @include respond(phone) {
     flex-wrap: wrap;
-    gap: 30px;
+    flex-direction: column;
 
     img {
       margin: 0;
+
+      &:first-child {
+        margin-bottom: 20px;
+      }
     }
   }
 }

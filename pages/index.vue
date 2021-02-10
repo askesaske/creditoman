@@ -521,7 +521,6 @@ export default {
     @include respond(tab-land) {
       width: 767px;
       display: flex;
-      gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -551,10 +550,23 @@ export default {
       @include respond(tab-land) {
         width: 373.5px;
         height: 371px;
+
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+
+        &:first-child {
+          margin-right: 20px;
+        }
       }
 
       @include respond(phone) {
         width: 343px;
+        margin-right: 0;
+
+        &:first-child {
+          margin-right: 0;
+        }
       }
 
       img {
@@ -790,7 +802,6 @@ export default {
   @include respond(tab-land) {
     &__row {
       width: 767px;
-      gap: 20px;
       justify-content: center;
     }
 
@@ -799,6 +810,11 @@ export default {
 
       &:not(:last-child) {
         margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      &:first-child {
+        margin-right: 20px;
       }
     }
   }
@@ -817,6 +833,10 @@ export default {
 
     &__box {
       width: 343px;
+
+      &:first-child {
+        margin-right: 0;
+      }
     }
   }
 }
