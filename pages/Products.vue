@@ -613,6 +613,7 @@ export default {};
         p {
           font-weight: 700;
           margin-top: 15px;
+          text-transform: uppercase;
         }
       }
     }
@@ -952,6 +953,7 @@ export default {};
       font-size: 18px;
       line-height: 22.6px;
       margin-bottom: 60px;
+      padding: 0 20px;
     }
 
     &__grid {

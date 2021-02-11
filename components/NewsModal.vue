@@ -35,6 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/fonts.scss";
+@import "../assets/style/respond";
 
 .modal {
   &__mask {
@@ -119,6 +120,50 @@ export default {
 
     &:focus {
       outline: none;
+    }
+  }
+
+  @include respond(tab-land) {
+    &__container {
+      width: 680px;
+      padding-top: 100px;
+    }
+
+    &__content {
+      width: 600px;
+    }
+  }
+
+  @include respond(phone) {
+    &__container {
+      width: 375px;
+    }
+
+    &__content {
+      width: 343px;
+    }
+
+    &__img-box {
+      margin-bottom: 58px;
+    }
+
+    &__date {
+      font-size: 14px;
+    }
+
+    &__heading {
+      font-size: 18px;
+      line-height: 22.6px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 17.6px;
+    }
+
+    &__button {
+      top: 22px;
+      right: 24px;
     }
   }
 }

@@ -77,6 +77,9 @@
       </div>
     </div>
     <div class="nav-dropdown" :class="sideBar ? 'nav-dropdown--show' : ''" id="navDropdown">
+
+      <button class="nav-dropdown__button" @click="sideBar = false"></button>
+
       <nuxt-link
         :to="localePath('/')"
         tag="a"
@@ -353,6 +356,22 @@ export default {
 
   &--show {
     right: 0;
+  }
+
+  &__button {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url("../assets/img/main/exit.png");
+    top: 24px;
+    right: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__link {

@@ -2,8 +2,19 @@
   <div class="partners">
     <a class="partners__btn"
             :class="btnStop ? 'partners__btn--stop' : ''"
-            href="http://185.100.65.231/api/download/">
-      {{ $t('partnership.download') }} <img src="../assets/img/about/drop.png"/>
+            href="http://185.100.65.231/api/rus-download/"
+            v-if="$i18n.locale === 'ru'"
+    >
+      {{ $t('partnership.download') }}
+      <img src="../assets/img/about/drop.png"/>
+    </a>
+    <a class="partners__btn"
+       :class="btnStop ? 'partners__btn--stop' : ''"
+       href="http://185.100.65.231/api/eng-download/"
+       v-else
+    >
+      {{ $t('partnership.download') }}
+      <img src="../assets/img/about/drop.png"/>
     </a>
     <div class="partner-welcome">
       <div class="partner-welcome__inner">
@@ -153,8 +164,19 @@
 
     <div class="download_ques">
       <p v-html="$t('partnership.fluidHeading')"></p>
-      <a href="http://185.100.65.231/api/download/" class="partners__btn download_ques__btn">
-        {{ $t('partnership.download') }} <img src="../assets/img/about/drop.png"/>
+      <a href="http://185.100.65.231/api/rus-download/"
+         class="partners__btn download_ques__btn"
+         v-if="$i18n.locale === 'ru'"
+      >
+        {{ $t('partnership.download') }}
+        <img src="../assets/img/about/drop.png"/>
+      </a>
+      <a href="http://185.100.65.231/api/eng-download/"
+         class="partners__btn download_ques__btn"
+         v-else
+      >
+        {{ $t('partnership.download') }}
+        <img src="../assets/img/about/drop.png"/>
       </a>
     </div>
 
@@ -242,7 +264,6 @@
             {{ $t('partnership.cashSosText14') }} <br/>
             {{ $t('partnership.cashSosText15') }} <br/>
             {{ $t('partnership.cashSosText16') }} <br/>
-            {{ $t('partnership.cashSosText17') }} <br/>
           </p>
         </div>
       </div>
@@ -407,6 +428,7 @@ export default {
   color: #623f99;
 
   @include respond(phone) {
+    padding: 0 20px;
     font-size: 26px;
     line-height: 32.7px;
   }
@@ -438,6 +460,7 @@ export default {
     font-size: 14px;
     line-height: 17.6px;
     margin-bottom: 30px;
+    padding: 0 20px;
   }
 }
 
@@ -1124,7 +1147,18 @@ export default {
 }
 </style>
 
-<style>
+<style lang="scss">
+@import "../assets/style/respond";
+
+@include respond(phone) {
+  .normal_txt {
+    p {
+      br {
+        display: none;
+      }
+    }
+  }
+}
 .statistics .statistics__content p span {
   color: #d5dd25;
   font-weight: 700;

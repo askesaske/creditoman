@@ -138,6 +138,8 @@ export default {
   }
 
   @include respond(phone) {
+    padding-top: 90px;
+
     h1 {
       font-size: 26px;
       line-height: 32.7px;

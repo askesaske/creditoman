@@ -85,13 +85,19 @@
         <p class="cachsoswiftly__subtitle" v-html="$t('about.teamText1')"></p>
         <p class="cachsoswiftly__subtitle" v-html="$t('about.teamText2')"></p>
       </div>
-      <img
-        class="cachsoswiftly__img"
-        src="../assets/img/about/swiftly.png"
-        ref="counter_div"
-        v-if="$i18n.locale === 'ru'"
-      />
-      <img v-else src="../assets/img/about/swiftly-en.png" alt="">
+      <div class="cachsoswiftly__img-box" v-if="$i18n.locale === 'ru'">
+        <div class="cachsoswiftly__overlay" @click="magnifyRus"></div>
+        <img
+          class="cachsoswiftly__img"
+          src="../assets/img/about/swiftly.png"
+          ref="counter_div"
+          id="rusImg"
+        />
+      </div>
+      <div class="cachsoswiftly__img-box" v-else>
+        <div class="cachsoswiftly__overlay" @click="magnifyEng"></div>
+        <img src="../assets/img/about/swiftly-en.png" alt="" id="engImg">
+      </div>
     </div>
     <div class="counter" id="counter">
       <h1>{{ $t('about.todayHeading') }}</h1>
@@ -134,6 +140,7 @@
 
 <script>
 import AnimateNumber from "@/components/AnimateNumber";
+import i18n from "@/config/i18n";
 
 export default {
   components: {
@@ -153,6 +160,37 @@ export default {
 
 
   methods: {
+
+    magnifyRus() {
+      let img = document.getElementById('rusImg');
+
+      var magicEtherImage = new Image();
+      magicEtherImage.src = img.src;
+
+      var padding = 20; // little buffer to prevent forced scrollbars
+
+      // Values to use when opening window
+      var winWidth = magicEtherImage.width + padding;
+      var winHeight = magicEtherImage.height + padding;
+
+      window.open(magicEtherImage.src, null, 'height=' + winHeight + ', width=' + winWidth + ', toolbar=0, location=0, status=0, scrollbars=0, resizable=0')
+    },
+
+    magnifyEng() {
+      let img = document.getElementById('engImg');
+
+      var magicEtherImage = new Image();
+      magicEtherImage.src = img.src;
+
+      var padding = 20; // little buffer to prevent forced scrollbars
+
+      // Values to use when opening window
+      var winWidth = magicEtherImage.width + padding;
+      var winHeight = magicEtherImage.height + padding;
+
+      window.open(magicEtherImage.src, null, 'height=' + winHeight + ', width=' + winWidth + ', toolbar=0, location=0, status=0, scrollbars=0, resizable=0')
+    },
+
     getPosition(element) {
       var xPosition = 0;
       var yPosition = 0;
@@ -481,7 +519,37 @@ img {
     }
   }
 
+  &__img-box {
+    position: relative;
+  }
+
+  &__overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    background-color: #000;
+    opacity: .5;
+
+    &:after {
+      content: '';
+      position: absolute;
+      background-image: url("../assets/img/about/magnifying-glass.svg");
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
   @include respond(phone) {
+
+    &__overlay {
+      display: block;
+    }
+
     h1 {
       font-size: 26px;
     }

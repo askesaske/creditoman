@@ -33,7 +33,7 @@
       <!--      <img :src="country.country_map" />-->
     </div>
     <div class="solo_body">
-      <img :src="country.country_map" width="590px" height="503px"/>
+      <img :src="country.country_map"/>
       <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_text }}</p>
       <p v-else>{{ country.eng_lang_text }}</p>
     </div>
@@ -208,6 +208,8 @@ p {
 
   img {
     margin-left: 20px;
+    width: 590px;
+    height: 503px;
   }
 
   @include respond(tab-land) {

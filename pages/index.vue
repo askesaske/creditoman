@@ -161,11 +161,10 @@
       <h1>{{ $t('newsTitle') }}</h1>
       <div class="articles_bord"/>
       <div class="articles__container">
+
         <div class="swiper-container">
-          <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="single_item swiper-slide" v-for="n in news">
+            <div class="swiper-slide single_item" v-for="n in news">
               <img :src="n.img"/>
               <p class="single_item__date">{{ n.created_date | moment("YYYY - MM - DD") }}</p>
               <h2 class="single_item__title" v-if="$i18n.locale === 'ru'">{{ n.rus_lang_title }}</h2>
@@ -177,12 +176,14 @@
               </p>
             </div>
           </div>
-          <!-- If we need navigation buttons -->
-          <div class="swiper-button-prev"></div>
+          <!-- Add Arrows -->
           <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
+
       </div>
     </div>
+
     <news-modal v-if="showModal" :newsContent=curModalContent @close="showModal = false">
       <h3 slot="header">custom header</h3>
     </news-modal>
@@ -195,16 +196,6 @@ import RepresentationsMap from "@/components/RepresentationsMap";
 import Swiper, {Navigation} from 'swiper';
 
 Swiper.use([Navigation]);
-
-const swiper = new Swiper('.swiper-container', {
-  // slidesPerView: 3,
-  // spaceBetween: 20,
-  // navigation: {
-  //   nextEl: '.swiper-button-next',
-  //   prevEl: '.swiper-button-prev',
-  // },
-});
-
 
 export default {
   components: {
@@ -227,6 +218,26 @@ export default {
   mounted() {
     this.$axios.get("http://185.100.65.231/api/news-list/")
       .then(response => (this.news = response.data));
+  },
+  updated() {
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 60,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 26
+        }
+      }
+    });
   }
 };
 </script>
@@ -234,6 +245,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/style/fonts.scss";
 @import "../assets/style/respond";
+@import '../node_modules/swiper/swiper-bundle.css';
 
 .index {
   padding-top: 70px;
@@ -349,17 +361,21 @@ export default {
           width: 133px;
           height: 27px;
           margin-right: 50px;
+          margin-left: 20px;
         }
+
         &:nth-child(2) {
           width: 75px;
           height: 44px;
         }
+
         &:nth-child(3) {
           width: 41px;
           height: 49px;
           margin-right: 75px;
-          margin-left: 30px;
+          margin-left: 60px;
         }
+
         &:nth-child(4) {
           width: 112px;
           height: 45px;
@@ -837,6 +853,12 @@ export default {
       &:first-child {
         margin-right: 0;
       }
+
+      h5 {
+        font-size: 18px;
+        line-height: 22.63px;
+        margin-bottom: 10px;
+      }
     }
   }
 }
@@ -983,6 +1005,16 @@ export default {
     grid-template-columns: repeat(1, 343px);
     max-width: 375px;
     justify-content: center;
+
+    .img_title {
+
+      height: unset;
+      margin-bottom: 10px;
+      h2 {
+        font-size: 18px;
+        line-height: 22.6px;
+      }
+    }
   }
 }
 
@@ -997,8 +1029,6 @@ export default {
 // articles
 .articles {
   padding: 120px 0;
-
-  display: none;
 
   &__container {
     width: 1200px;
@@ -1023,9 +1053,35 @@ export default {
     width: 160px;
     border-bottom: 2px solid #623f99;
   }
+
+  @include respond(tab-land) {
+
+  }
+
+  @include respond(phone) {
+    padding: 90px 0;
+
+    &__container {
+      max-width: 375px;
+      width: unset;
+    }
+
+    h1 {
+      //@include medium;
+      font-size: 26px;
+      line-height: 32px;
+    }
+
+    .articles_bord {
+      margin: 5px auto 40px;
+      width: 68px;
+    }
+  }
 }
 
 .single_item {
+  width: 370px;
+
   img {
     width: 387px;
     height: 274px;
@@ -1041,7 +1097,7 @@ export default {
   }
 
   &__title {
-    //@include medium;
+    @include bold;
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 10px;
@@ -1073,7 +1129,84 @@ export default {
       top: -2px;
     }
   }
+
+  @include respond(tab-land) {
+    width: 340.5px;
+  }
+
+  @include respond(phone) {
+    max-width: 255px;
+    margin: 0 auto;
+
+    img {
+      width: 255px;
+      height: 180px;
+    }
+
+    &__date {
+      font-size: 14px;
+      line-height: 17.6px;
+    }
+
+    &__title {
+      font-size: 18px;
+      line-height: 22.6px;
+    }
+
+    &__descr {
+      font-size: 14px;
+      line-height: 17.6px;
+    }
+
+    &__more {
+      font-size: 14px;
+      line-height: 17.6px;
+
+      &::before {
+        content: url("../assets/img/main/go.png");
+        position: absolute;
+        right: -26px;
+        top: -2px;
+      }
+    }
+  }
 }
+
+.swiper-container {
+  padding: 0 25px;
+
+  @include respond(tab-land) {
+    padding: 0 28px;
+  }
+
+  @include respond(phone) {
+    padding: 0 60px;
+  }
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+  left: 1px;
+
+  @include respond(phone) {
+    left: 20px;
+  }
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+  right: 1px;
+
+  @include respond(phone) {
+    right: 20px;
+  }
+}
+
+.swiper-button-prev:after, .swiper-button-next:after{
+  font-size: 30px !important;
+  color: #e8e8e8;
+
+  @include respond(phone) {
+    font-size: 40px !important;
+  }
+}
+
 </style>
 
 <style lang="scss">

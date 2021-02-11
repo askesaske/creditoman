@@ -5,24 +5,106 @@
     </h3>
 
     <div class="representations__map">
-      <div v-for="count in countries">
-        <img :src="count.country_position_on_map"
-             alt=""
-             v-if="country === count.eng_lang_country">
+      <div class="representations__map-box">
+        <div v-for="count in countries">
+          <img :src="count.country_position_on_map"
+               alt=""
+               v-if="country === count.eng_lang_country">
+
+          <div class="representations__info-box info-box" v-if="country === count.eng_lang_country">
+            <div class="info-box__title">
+              <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}</span>
+              <span v-else>{{ count.eng_lang_country }}</span>
+            </div>
+            <div class="info-box__list">
+              <div class="info-box__item">
+                <img src="../assets/img/agencies/location-pin.svg" alt="">
+                <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_terminal_or_mobile }}</span>
+                <span v-else>{{ count.eng_lang_terminal_or_mobile }}</span>
+              </div>
+              <div class="info-box__item">
+                <img src="../assets/img/agencies/user.svg" alt="">
+                <span v-if="$i18n.locale === 'ru'">{{ count.workers }} работников</span>
+                <span v-else>{{ count.workers }} employees</span>
+              </div>
+              <div class="info-box__item">
+                <img src="../assets/img/agencies/briefcase.svg" alt="">
+                <span v-if="$i18n.locale === 'ru'">{{ count.clients }} клиентов</span>
+                <span v-else>{{ count.clients }} clients</span>
+              </div>
+            </div>
+            <div class="info-box__target">
+              <img src="../assets/img/agencies/target.svg" alt="">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="representations__countries">
+          <img :src="c.country_flag"
+               id="clicked-flag"
+               v-for="c in countries"
+               alt=""
+               @click="chooseCountry(c.eng_lang_country)"
+               :class="country === c.eng_lang_country ? 'active' : ''">
+        </div>
       </div>
-      <div class="representations__countries">
-        <img :src="c.country_flag"
-             id="clicked-flag"
-             v-for="c in countries"
-             alt=""
-             @click="chooseCountry(c.eng_lang_country)"
-             :class="country === c.eng_lang_country ? 'active' : ''">
+
+      <div class="swiper-container representations__mobile-box">
+        <div class="swiper-wrapper">
+          <div v-for="(count, i) in countries" class="swiper-slide">
+            <img :src="count.mobile_country_position_on_map"
+                 alt="">
+
+            <div class="representations__info-box info-box">
+              <div class="info-box__title">
+                <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}</span>
+                <span v-else>{{ count.eng_lang_country }}</span>
+              </div>
+              <div class="info-box__list">
+                <div class="info-box__item">
+                  <img src="../assets/img/agencies/location-pin.svg" alt="">
+                  <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_terminal_or_mobile }}</span>
+                  <span v-else>{{ count.eng_lang_terminal_or_mobile }}</span>
+                </div>
+                <div class="info-box__item">
+                  <img src="../assets/img/agencies/user.svg" alt="">
+                  <span v-if="$i18n.locale === 'ru'">{{ count.workers }} работников</span>
+                  <span v-else>{{ count.workers }} employees</span>
+                </div>
+                <div class="info-box__item">
+                  <img src="../assets/img/agencies/briefcase.svg" alt="">
+                  <span v-if="$i18n.locale === 'ru'">{{ count.clients }} клиентов</span>
+                  <span v-else>{{ count.clients }} clients</span>
+                </div>
+              </div>
+              <div class="info-box__target">
+                <img src="../assets/img/agencies/target.svg" alt="">
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <div class="representations__count-box">
+              <span>{{i + 1}}</span> / {{ countries.length }}
+            </div>
+          </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Swiper, {Navigation} from 'swiper';
+
+Swiper.use([Navigation]);
+
 let timer = null;
 const AUTO_INTERVAL = 4000;
 
@@ -38,6 +120,8 @@ export default {
   methods: {
     chooseCountry(str) {
       this.country = str;
+      clearInterval(timer);
+      this.setAutoRoll();
     },
     setAutoRoll() {
       let vueSelf = this;
@@ -64,7 +148,20 @@ export default {
   mounted() {
     this.$axios.get("http://185.100.65.231/api/country-list/")
       .then(response => (this.countries = response.data));
-    this.play();
+    if(window.innerWidth > 767) {
+      this.play();
+    }
+  },
+
+  updated() {
+    var swiper = new Swiper('.representations__mobile-box', {
+      slidesPerView: 1,
+      spaceBetween: 60,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
   }
 };
 </script>
@@ -72,6 +169,8 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/style/fonts.scss";
 @import "../assets/style/respond";
+@import '../node_modules/swiper/swiper-bundle.css';
+
 //representations
 .representations {
   text-align: center;
@@ -98,6 +197,8 @@ export default {
   }
 
   &__map {
+    max-width: 1200px;
+    margin: 0 auto;
     position: relative;
 
     img {
@@ -123,11 +224,120 @@ export default {
     }
   }
 
+  &__info-box {
+
+  }
+
+  &__mobile-box {
+    display: none;
+  }
+
+  &__count-box {
+    position: absolute;
+    bottom: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include normal;
+    font-size: 18px;
+    color: #b9b9b9;
+
+    span {
+      font-weight: 700;
+      color: #623F99;
+    }
+  }
+
   @include respond(phone) {
+
+    &__map {
+      max-width: 375px;
+      margin-top: 26px;
+    }
+
     &__title {
       font-size: 26px;
+    }
+
+    &__map-box {
+      display: none;
+    }
+
+    &__mobile-box {
+      display: block;
+      padding-bottom: 72px;
     }
   }
 }
 
+.info-box {
+  position: absolute;
+  min-height: 90px;
+  bottom: 60px;
+  left: 50px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(146, 115, 194, 0.5);
+  border-radius: 8px;
+
+  padding: 12px;
+
+  text-align: left;
+
+  &__title {
+    @include bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #623F99;
+    text-transform: uppercase;
+
+    margin-bottom: 7px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    @include normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #131313;
+
+    img {
+      margin-right: 6px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 3px;
+    }
+  }
+
+  &__target {
+    display: none;
+  }
+
+  @include respond(tab-land) {
+    bottom: 10px;
+    left: 10px;
+    padding: 5px;
+    width: 185px;
+  }
+}
+
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next,
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+  bottom: 20px;
+  top: unset;
+}
+
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+  left: 110px;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+  right: 110px;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+  color: #D5DD25;
+  font-size: 32px;
+}
 </style>
