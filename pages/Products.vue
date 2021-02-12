@@ -469,6 +469,11 @@ export default {};
         &:first-child {
           margin-right: 0;
         }
+
+        h3 {
+          font-size: 18px;
+          line-height: 22.6px;
+        }
       }
     }
   }
@@ -778,6 +783,16 @@ export default {};
     &__txt {
       h2, h2 + .cus_brd {
         display: none;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 17.6px;
+
+        &:after {
+          top: 0;
+          left: -33px;
+        }
       }
     }
   }

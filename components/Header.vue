@@ -76,6 +76,7 @@
         <img src="../assets/img/main/burger-btn.png" alt="">
       </div>
     </div>
+
     <div class="nav-dropdown" :class="sideBar ? 'nav-dropdown--show' : ''" id="navDropdown">
 
       <button class="nav-dropdown__button" @click="sideBar = false"></button>
@@ -107,12 +108,21 @@
       >
         {{ $t('header.products') }}
       </nuxt-link>
+      <nuxt-link
+        :to="localePath('/Agencies')"
+        tag="a"
+        class="nav-dropdown__link"
+        title="представительства"
+        @click.native="sideBar = false"
+      >
+        {{ $t('header.branches') }}
+      </nuxt-link>
       <div
         class="nav-dropdown__link nav-agencies"
         :class="sideDrop ? 'nav-agencies--show' : ''"
         @click="toggleSideDrop"
       >
-        {{ $t('header.branches') }}
+        <span>Список стран</span>
         <img src="../assets/img/main/chevron.png" alt="">
         <div class="nav-agencies__dropdown">
           <div class="nav-agencies__list">
@@ -391,6 +401,7 @@ export default {
 
 .nav-agencies {
   $e: &;
+  margin-top: -20px;
 
   transition: all .3s;
 
@@ -403,9 +414,17 @@ export default {
     }
   }
 
+  span {
+    @include normal;
+    font-size: 20px;
+    line-height: 25px;
+    color: #623f99;
+    text-transform: lowercase;
+  }
+
   img {
     margin-left: 8px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
   }
 
   &__dropdown {

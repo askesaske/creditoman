@@ -59,7 +59,7 @@
   "newsTitle": "news and events",
   "footerTitle": "Contact Us",
   "about": {
-    "heading": "From a simple idea <br> to the International Fintech Company",
+    "heading": "From a simple idea <br> to the International <br class=\"About__mobile-br\"> Fintech Company",
     "ceoName": "Vladimir Radostovets",
     "ceoPosition": "CEO",
     "biography1": "4 years ago, I did not doubt that the future is not only in IT technologies, it’s all about technical solutions allowing to accelerate and facilitate business processes.",

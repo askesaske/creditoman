@@ -125,9 +125,12 @@
       </div>
     </div>
     <div class="video_cont">
-      <button>
-        {{ $t('about.profileBtn') }}<img src="../assets/img/about/drop.png"/>
-      </button>
+      <a href="http://185.100.65.231/api/rus-company-download/" v-if="$i18n.locale === 'ru'">
+        Профиль компании <img src="../assets/img/about/drop.png"/>
+      </a>
+      <a href="http://185.100.65.231/api/eng-company-download/" v-else>
+        Company profile <img src="../assets/img/about/drop.png"/>
+      </a>
       <div class="video_cont__wrapper">
         <div class="video_cont__box">
           <div class="video_cont__overlay" @click="playVideo" v-if="overlay"></div>
@@ -657,7 +660,7 @@ img {
   align-items: center;
   padding: 120px 0;
 
-  button {
+  a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -724,6 +727,23 @@ img {
       max-width: 307px;
       width: auto;
     }
+  }
+}
+</style>
+
+<style lang="scss">
+@import "../assets/style/respond";
+.cachsoswiftly__subtitle {
+  br {
+    display: none;
+  }
+}
+
+.About__mobile-br {
+  display: none;
+
+  @include respond(phone) {
+    display: block;
   }
 }
 </style>
