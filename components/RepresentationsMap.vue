@@ -16,7 +16,8 @@
               <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}</span>
               <span v-else>{{ count.eng_lang_country }}</span>
             </div>
-            <div class="info-box__list">
+            <div class="info-box__list"
+                 v-if="(count.rus_lang_terminal_or_mobile !== null || count.eng_lang_terminal_or_mobile !== null) && count.workers !== null && count.clients !== null">
               <div class="info-box__item">
                 <img src="../assets/img/agencies/location-pin.svg" alt="">
                 <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_terminal_or_mobile }}</span>
@@ -33,10 +34,10 @@
                 <span v-else>{{ count.clients }} clients</span>
               </div>
             </div>
-            <div class="info-box__target">
+            <div class="info-box__target" v-else>
               <img src="../assets/img/agencies/target.svg" alt="">
-              <span></span>
-              <span></span>
+              <span v-if="$i18n.locale === 'ru'">Таргет 2021</span>
+              <span v-else>Target 2021</span>
             </div>
           </div>
 
@@ -63,7 +64,8 @@
                 <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}</span>
                 <span v-else>{{ count.eng_lang_country }}</span>
               </div>
-              <div class="info-box__list">
+              <div class="info-box__list"
+                   v-if="(count.rus_lang_terminal_or_mobile !== null || count.eng_lang_terminal_or_mobile !== null) && count.workers !== null && count.clients !== null">
                 <div class="info-box__item">
                   <img src="../assets/img/agencies/location-pin.svg" alt="">
                   <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_terminal_or_mobile }}</span>
@@ -80,10 +82,10 @@
                   <span v-else>{{ count.clients }} clients</span>
                 </div>
               </div>
-              <div class="info-box__target">
+              <div class="info-box__target" v-else>
                 <img src="../assets/img/agencies/target.svg" alt="">
-                <span></span>
-                <span></span>
+                <span v-if="$i18n.locale === 'ru'">Таргет 2021</span>
+                <span v-else>Target 2021</span>
               </div>
             </div>
 
@@ -312,7 +314,17 @@ export default {
   }
 
   &__target {
-    display: none;
+    display: flex;
+    align-items: center;
+
+    @include normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #131313;
+
+    img {
+      margin-right: 6px;
+    }
   }
 
   @include respond(tab-land) {

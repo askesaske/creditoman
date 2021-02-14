@@ -11,12 +11,19 @@
           <div class="text__single" v-for="country in world.country">
             <nuxt-link :to="localePath('/Agencies/' + country.id)" class="text__name" v-if="$i18n.locale === 'ru'">{{ country.rus_lang_country }}</nuxt-link>
             <nuxt-link :to="localePath('/Agencies/' + country.id)" class="text__name" v-else>{{ country.eng_lang_country }}</nuxt-link>
-            <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_terminal_or_mobile }} </p>
-            <p v-else>{{ country.eng_lang_terminal_or_mobile }} </p>
-            <p v-if="$i18n.locale === 'ru'">{{ country.workers }} работников</p>
-            <p v-else>{{ country.workers }} employees</p>
-            <p v-if="$i18n.locale === 'ru'">{{ country.clients }} клиентов</p>
-            <p v-else>{{ country.clients }} clients</p>
+            <div class="text__list"
+                 v-if="(country.rus_lang_country !== null || country.eng_lang_country !== null) && country.workers !== null && country.clients !== null">
+              <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_terminal_or_mobile }} </p>
+              <p v-else>{{ country.eng_lang_terminal_or_mobile }} </p>
+              <p v-if="$i18n.locale === 'ru'">{{ country.workers }} работников</p>
+              <p v-else>{{ country.workers }} employees</p>
+              <p v-if="$i18n.locale === 'ru'">{{ country.clients }} клиентов</p>
+              <p v-else>{{ country.clients }} clients</p>
+            </div>
+            <div class="text__target" v-else>
+              <p v-if="$i18n.locale === 'ru'">Таргет 2021</p>
+              <p v-else>Target 2021</p>
+            </div>
           </div>
         </div>
       </div>
