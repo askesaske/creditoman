@@ -507,7 +507,7 @@ export default {
     line-height: 19px;
     text-transform: uppercase;
     color: #623f99;
-    padding: 6px 23px;
+    padding: 6px 12px;
     display: block;
     text-decoration: none;
     margin-bottom: 4px;
