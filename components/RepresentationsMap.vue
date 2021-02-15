@@ -56,8 +56,10 @@
       <div class="swiper-container representations__mobile-box">
         <div class="swiper-wrapper">
           <div v-for="(count, i) in countries" class="swiper-slide">
-            <img :src="count.mobile_country_position_on_map"
-                 alt="">
+            <div class="representations__img-box">
+              <img :src="count.country_map"
+                   alt="">
+            </div>
 
             <div class="representations__info-box info-box">
               <div class="info-box__title">
@@ -232,6 +234,21 @@ export default {
 
   &__mobile-box {
     display: none;
+  }
+
+  &__img-box {
+    position: relative;
+    width: 375px;
+    height: 260px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      //transform: scale(.5);
+    }
   }
 
   &__count-box {
