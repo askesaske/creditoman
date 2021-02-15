@@ -247,7 +247,7 @@ export default {
       position: absolute;
       right: 0;
       top: 0;
-      //transform: scale(.5);
+      transform: translateY(-10%);
     }
   }
 
