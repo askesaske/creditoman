@@ -131,14 +131,27 @@
       <a href="http://185.100.65.231/api/eng-company-download/" v-else>
         Company profile <img src="../assets/img/about/drop.png"/>
       </a>
-      <div class="video_cont__wrapper">
+      <div class="video_cont__wrapper" v-if="$i18n.locale === 'ru'">
         <div class="video_cont__box">
-          <div class="video_cont__overlay" @click="playVideo" v-if="overlay"></div>
-          <video v-for="v in video" :src="v.video" controls id="video"></video>
+          <div class="video_cont__overlay" @click="playRusVideo" v-if="overlay"></div>
+          <video v-for="v in rusVideo"
+                 :src="v.rus_video"
+                 controls
+                 id="rusVideo"></video>
+        </div>
+      </div>
+      <div class="video_cont__wrapper" v-else>
+        <div class="video_cont__box">
+          <div class="video_cont__overlay" @click="playEngVideo" v-if="overlay"></div>
+          <video v-for="v in engVideo"
+                 :src="v.eng_video"
+                 controls
+                 id="engVideo"></video>
         </div>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -157,8 +170,9 @@ export default {
     countryCount: 0,
     staffCount: 0,
     cashCount: 0,
-    video: [],
-    overlay: true
+    rusVideo: [],
+    engVideo: [],
+    overlay: true,
   }),
 
 
@@ -205,9 +219,13 @@ export default {
       }
       return yPosition;
     },
-    playVideo() {
+    playRusVideo() {
       this.overlay = false;
-      document.getElementById('video').play();
+      document.getElementById('rusVideo').play();
+    },
+    playEngVideo() {
+      this.overlay = false;
+      document.getElementById('engVideo').play();
     }
   },
 
@@ -228,8 +246,10 @@ export default {
     var counterBox = document.getElementById('counter');
     this.counterPos = this.getPosition(counterBox);
 
-    this.$axios.get("http://185.100.65.231/api/videos-list/")
-      .then(response => (this.video = response.data));
+    this.$axios.get("http://185.100.65.231/api/rusvideos-list/")
+      .then(response => (this.rusVideo = response.data));
+    this.$axios.get("http://185.100.65.231/api/engvideos-list/")
+      .then(response => (this.engVideo = response.data));
   },
 };
 </script>
@@ -733,6 +753,7 @@ img {
 
 <style lang="scss">
 @import "../assets/style/respond";
+
 .cachsoswiftly__subtitle {
   br {
     display: none;

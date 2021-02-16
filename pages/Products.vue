@@ -938,6 +938,7 @@ export default {};
       //height: 255px;
       padding: 30px 20px 20px;
       text-align: center;
+      min-height: 274px;
 
       p {
         @include normal;
@@ -976,6 +977,10 @@ export default {};
       width: unset;
       max-width: 375px;
       padding: 0 15px;
+
+      &__single {
+        min-height: 234px;
+      }
     }
   }
 }

@@ -105,6 +105,12 @@ export default {
     line-height: 20px;
     color: #131313;
     overflow-wrap: break-word;
+
+    img {
+      width: auto !important;
+      max-width: 100% !important;
+      height: unset !important;
+    }
   }
 
   &__button {

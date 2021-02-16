@@ -9,7 +9,7 @@
         <div v-for="count in countries">
           <img :src="count.country_position_on_map"
                alt=""
-               v-if="country === count.eng_lang_country">
+               v-show="country === count.eng_lang_country">
 
           <div class="representations__info-box info-box" v-if="country === count.eng_lang_country">
             <div class="info-box__title">
@@ -106,6 +106,7 @@
 
 <script>
 import Swiper, {Navigation} from 'swiper';
+import i18n from "@/config/i18n";
 
 Swiper.use([Navigation]);
 
@@ -118,7 +119,7 @@ export default {
       country: "Kazakhstan",
       countries: [],
       playing: false,
-      currentIndex: 0
+      currentIndex: 0,
     };
   },
   methods: {
@@ -146,7 +147,7 @@ export default {
     currentIndex() {
       let clickedFlag = this.countries[this.currentIndex].eng_lang_country;
       this.chooseCountry(clickedFlag);
-    }
+    },
   },
 
   mounted() {

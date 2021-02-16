@@ -22,7 +22,7 @@
                 <p v-if="$i18n.locale === 'ru'">{{ country.rus_lang_main_industries }}</p>
                 <p v-else>{{ country.eng_lang_main_industries }}</p>
               </div>
-              <div class="country_menu__item">
+              <div class="country_menu__item" v-if="country.number_of_cities !== 0">
                 <p>{{ $t('branch.numberOfCities') }}</p>
                 <p>{{ country.number_of_cities }}</p>
               </div>
@@ -73,9 +73,7 @@ export default {
           break;
         }
       }
-      console.log(this.firstHalfRU);
       this.secondHalfRU = str.substring(this.firstHalfRU.length);
-      console.log(this.secondHalfRU);
       // let sentences = this.fullText.split(/([!,?,.])/);
       // console.log(sentences);
     },
@@ -93,9 +91,7 @@ export default {
           break;
         }
       }
-      console.log(this.firstHalfEN);
       this.secondHalfEN = str.substring(this.firstHalfEN.length);
-      console.log(this.secondHalfEN);
       // let sentences = this.fullText.split(/([!,?,.])/);
       // console.log(sentences);
     },

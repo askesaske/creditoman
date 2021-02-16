@@ -167,7 +167,7 @@
             <div class="swiper-slide single_item" v-for="n in news">
               <img :src="n.img"/>
               <p class="single_item__date">{{ n.created_date | moment("YYYY - MM - DD") }}</p>
-              <h2 class="single_item__title" v-if="$i18n.locale === 'ru'">{{ n.rus_lang_title }}</h2>
+              <h2 class="single_item__title" v-if="$i18n.locale === 'ru'" @click="openModal(n)">{{ n.rus_lang_title }}</h2>
               <h2 class="single_item__title" v-else>{{ n.eng_lang_title }}</h2>
               <p class="single_item__descr" v-if="$i18n.locale ==='ru'">{{ n.rus_lang_short_text }}</p>
               <p class="single_item__descr" v-else>{{ n.eng_lang_short_text }}</p>
@@ -1102,6 +1102,7 @@ export default {
     line-height: 28px;
     margin-bottom: 10px;
     color: #623f99;
+    cursor: pointer;
   }
 
   &__descr {
