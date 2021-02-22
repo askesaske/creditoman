@@ -122,7 +122,7 @@
         :class="sideDrop ? 'nav-agencies--show' : ''"
         @click="toggleSideDrop"
       >
-        <span>Список стран</span>
+        <span>{{ $t('header.countryList')}}</span>
         <img src="../assets/img/main/chevron.png" alt="">
         <div class="nav-agencies__dropdown">
           <div class="nav-agencies__list">
@@ -353,10 +353,13 @@ export default {
   right: -200%;
   top: 0;
   min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   background-color: #FFFFFF;
   z-index: 10000;
   padding: 60px 40px;
+
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
