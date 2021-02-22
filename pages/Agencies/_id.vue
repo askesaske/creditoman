@@ -97,7 +97,7 @@ export default {
     },
   },
   beforeCreate() {
-    this.$axios.get("http://185.100.65.231/api/country-detail/" + this.$route.params.id + "/")
+    this.$axios.get("http://185.22.67.25/api/country-detail/" + this.$route.params.id + "/")
       .then(response => (this.country = response.data));
   },
   beforeUpdate() {

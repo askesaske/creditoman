@@ -209,7 +209,7 @@ export default {
     }
   },
   mounted() {
-    this.$axios.get("http://185.100.65.231/api/country-list/")
+    this.$axios.get("http://185.22.67.25/api/country-list/")
       .then(response => (this.countries = response.data));
   }
 };

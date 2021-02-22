@@ -168,7 +168,7 @@
               <img :src="n.img"/>
               <p class="single_item__date">{{ n.created_date | moment("YYYY - MM - DD") }}</p>
               <h2 class="single_item__title" v-if="$i18n.locale === 'ru'" @click="openModal(n)">{{ n.rus_lang_title }}</h2>
-              <h2 class="single_item__title" v-else>{{ n.eng_lang_title }}</h2>
+              <h2 class="single_item__title" v-else @click="openModal(n)">{{ n.eng_lang_title }}</h2>
               <p class="single_item__descr" v-if="$i18n.locale ==='ru'">{{ n.rus_lang_short_text }}</p>
               <p class="single_item__descr" v-else>{{ n.eng_lang_short_text }}</p>
               <p class="single_item__more" @click="openModal(n)">
@@ -216,7 +216,7 @@ export default {
     },
   },
   mounted() {
-    this.$axios.get("http://185.100.65.231/api/news-list/")
+    this.$axios.get("http://185.22.67.25/api/news-list/")
       .then(response => (this.news = response.data));
   },
   updated() {
