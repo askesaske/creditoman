@@ -216,7 +216,7 @@ export default {
     },
   },
   mounted() {
-    this.$axios.get("http://185.22.67.25/api/news-list/")
+    this.$axios.get("http://cashsoswiftly.com/api/news-list/")
       .then(response => (this.news = response.data));
   },
   updated() {
