@@ -134,6 +134,7 @@ p {
   color: #131313;
   max-width: 590px;
   overflow-wrap: break-word;
+  white-space: pre-line;
 
   @include respond(tab-land) {
     padding: 0 30px;
