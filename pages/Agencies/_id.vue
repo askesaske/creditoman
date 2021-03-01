@@ -97,7 +97,7 @@ export default {
     },
   },
   created() {
-    this.$axios.get("http://cashsoswiftly.com/api/country-detail/" + this.$route.params.id + "/")
+    this.$axios.get("https://cashsoswiftly.com/api/country-detail/" + this.$route.params.id + "/")
       .then(response => (this.country = response.data));
   },
   beforeUpdate() {

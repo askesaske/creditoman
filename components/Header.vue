@@ -209,7 +209,7 @@ export default {
     }
   },
   mounted() {
-    this.$axios.get("http://cashsoswiftly.com/api/country-list/")
+    this.$axios.get("https://cashsoswiftly.com/api/country-list/")
       .then(response => (this.countries = response.data));
   }
 };

@@ -71,7 +71,7 @@ export default {
         full_name: this.full_name,
         contact_data: this.contact_data,
       };
-      this.$axios.post("http://cashsoswiftly.com/api/requests/", userInfo)
+      this.$axios.post("https://cashsoswiftly.com/api/requests/", userInfo)
         .then(response => this.tempData = response.data)
         .catch(error => {
           this.errorMessage = error.message;

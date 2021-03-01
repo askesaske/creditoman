@@ -125,10 +125,10 @@
       </div>
     </div>
     <div class="video_cont">
-      <a href="http://cashsoswiftly.com/api/rus-company-download/" v-if="$i18n.locale === 'ru'">
+      <a href="https://cashsoswiftly.com/api/rus-company-download/" v-if="$i18n.locale === 'ru'">
         Профиль компании <img src="../assets/img/about/drop.png"/>
       </a>
-      <a href="http://cashsoswiftly.com/api/eng-company-download/" v-else>
+      <a href="https://cashsoswiftly.com/api/eng-company-download/" v-else>
         Company profile <img src="../assets/img/about/drop.png"/>
       </a>
       <div class="video_cont__wrapper" v-if="$i18n.locale === 'ru'">
@@ -246,9 +246,9 @@ export default {
     var counterBox = document.getElementById('counter');
     this.counterPos = this.getPosition(counterBox);
 
-    this.$axios.get("http://cashsoswiftly.com/api/rusvideos-list/")
+    this.$axios.get("https://cashsoswiftly.com/api/rusvideos-list/")
       .then(response => (this.rusVideo = response.data));
-    this.$axios.get("http://cashsoswiftly.com/api/engvideos-list/")
+    this.$axios.get("https://cashsoswiftly.com/api/engvideos-list/")
       .then(response => (this.engVideo = response.data));
   },
 };

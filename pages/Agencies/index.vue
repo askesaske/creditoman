@@ -44,7 +44,7 @@ export default {
     };
   },
   mounted() {
-    this.$axios.get("http://cashsoswiftly.com/api/world-list/")
+    this.$axios.get("https://cashsoswiftly.com/api/world-list/")
       .then(response => (this.worlds = response.data));
   },
 };

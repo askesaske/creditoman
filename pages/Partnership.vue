@@ -2,7 +2,7 @@
   <div class="partners">
     <a class="partners__btn"
             :class="btnStop ? 'partners__btn--stop' : ''"
-            href="http://cashsoswiftly.com/api/rus-download/"
+            href="https://cashsoswiftly.com/api/rus-download/"
             v-if="$i18n.locale === 'ru'"
     >
       {{ $t('partnership.download') }}
@@ -10,7 +10,7 @@
     </a>
     <a class="partners__btn"
        :class="btnStop ? 'partners__btn--stop' : ''"
-       href="http://cashsoswiftly.com/api/eng-download/"
+       href="https://cashsoswiftly.com/api/eng-download/"
        v-else
     >
       {{ $t('partnership.download') }}
@@ -164,14 +164,14 @@
 
     <div class="download_ques">
       <p v-html="$t('partnership.fluidHeading')"></p>
-      <a href="http://cashsoswiftly.com/api/rus-download/"
+      <a href="https://cashsoswiftly.com/api/rus-download/"
          class="partners__btn download_ques__btn"
          v-if="$i18n.locale === 'ru'"
       >
         {{ $t('partnership.download') }}
         <img src="../assets/img/about/drop.png"/>
       </a>
-      <a href="http://cashsoswiftly.com/api/eng-download/"
+      <a href="https://cashsoswiftly.com/api/eng-download/"
          class="partners__btn download_ques__btn"
          v-else
       >

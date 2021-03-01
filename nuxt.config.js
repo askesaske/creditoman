@@ -49,7 +49,6 @@ export default {
     [
       'nuxt-i18n',
       {
-        defaultLocale: 'ru',
         locales: [
           {
             code: 'en',
@@ -60,8 +59,9 @@ export default {
             name: 'Russian'
           }
         ],
+        defaultLocale: 'en',
         vueI18n: i18n,
-        strategy: 'no_prefix',
+        strategy: 'prefix_except_default',
       }
     ]
   ],
