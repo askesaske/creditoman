@@ -87,4 +87,5 @@ export default {
     linkActiveClass: 'active_link',
     linkExactActiveClass: 'exact_active_link',
   },
+  ssr: false,
 }
