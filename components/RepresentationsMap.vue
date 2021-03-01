@@ -11,7 +11,7 @@
                alt=""
                v-show="country === count.eng_lang_country">
 
-          <div class="representations__info-box info-box" v-if="country === count.eng_lang_country">
+          <nuxt-link :to="localePath('/Agencies/' + count.id)" :key="count.id" class="representations__info-box info-box" v-if="country === count.eng_lang_country">
             <div class="info-box__title">
               <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}</span>
               <span v-else>{{ count.eng_lang_country }}</span>
@@ -39,7 +39,7 @@
               <span v-if="$i18n.locale === 'ru'">Таргет 2021</span>
               <span v-else>Target 2021</span>
             </div>
-          </div>
+          </nuxt-link>
 
         </div>
 
@@ -61,7 +61,12 @@
                    alt="">
             </div>
 
-            <div class="representations__info-box info-box">
+<!--            <nuxt-link :to="localePath('/Agencies/' + count.id)"-->
+<!--                       v-for="count in countries"-->
+<!--                       -->
+<!--                       v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}-->
+<!--            </nuxt-link>-->
+            <nuxt-link :to="localePath('/Agencies/' + count.id)" :key="count.id" class="representations__info-box info-box">
               <div class="info-box__title">
                 <span v-if="$i18n.locale === 'ru'">{{ count.rus_lang_country }}</span>
                 <span v-else>{{ count.eng_lang_country }}</span>
@@ -89,7 +94,7 @@
                 <span v-if="$i18n.locale === 'ru'">Таргет 2021</span>
                 <span v-else>Target 2021</span>
               </div>
-            </div>
+            </nuxt-link>
 
             <div class="representations__count-box">
               <span>{{i + 1}}</span> / {{ countries.length }}
@@ -302,6 +307,7 @@ export default {
   padding: 12px;
 
   text-align: left;
+  text-decoration: none;
 
   &__title {
     @include bold;
